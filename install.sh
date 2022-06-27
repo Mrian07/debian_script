@@ -35,13 +35,19 @@ add-shell /usr/sbin/nologin
 
 echo 'deb http://ftp.debian.org/debian buster-backports main' >/etc/apt/sources.list.d/buster-backports.list
 
-apt-get update
-apt-get -y dist-upgrade
-apt-get -y install build-essential
-apt-get -y install cmake automake curl git zip jq speedtest-cli
+apt-get -qq update
+apt-get -yqq dist-upgrade
+apt-get -yqq install build-essential
+apt-get -yqq install automake
+apt-get -yqq install cmake
+apt-get -yqq install curl
+apt-get -yqq install git
+apt-get -yqq install zip
+apt-get -yqq install jq
+apt-get -yqq install speedtest-cli
 
 wget -q 'https://raw.githubusercontent.com/cybertize/axis/default/sources/banner' \
--O /etc/update-motd.d/10-uname
+-O /etc/update-motd.d/10-uname && chmod +x /etc/update-motd.d/10-uname
 
 wget -q 'https://raw.githubusercontent.com/cybertize/axis/default/sources/message' \
 -O /etc/issue.net
@@ -86,20 +92,28 @@ echo "UNIT=\"${getUnit}\"" >>/usr/local/cybertize/utility/.env
 read -p " Sila masukkan nama Samaran: " getName
 echo "NAME=\"${getName}\"" >>/usr/local/cybertize/utility/.env
 
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/nginx.sh && bash nginx.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/nginx.sh \
+&& chmod +x nginx.sh && ./nginx.sh 
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/dropbear.sh \
+&& chmod +x dropbear.sh && ./dropbear.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/openvpn.sh \
+&& chmod +x openvpn.sh && ./openvpn.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/squid.sh \
+&& chmod +x squid.sh && ./squid.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/stunnel.sh \
+&& chmod +x stunnel.sh && ./stunnel.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/badvpn.sh \
+&& chmod +x badvpn.sh && ./badvpn.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/fail2ban.sh \
+&& chmod +x fail2ban.sh && ./fail2ban.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/ddosdef.sh \
+&& chmod +x ddosdef.sh && ./ddosdef.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/iptables.sh \
+&& chmod +x iptables.sh && ./iptables.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/plugins/command.sh \
+&& chmod +x command.sh && ./command.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/dropbear.sh && bash dropbear.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/openvpn.sh && bash openvpn.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/squid.sh && bash squid.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/stunnel.sh && bash stunnel.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/badvpn.sh && bash badvpn.sh
-
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/fail2ban.sh && bash fail2ban.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/ddosdef.sh && bash ddosdef.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/iptables.sh && bash iptables.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/plugins/command.sh && bash command.sh
-
-apt-get autoclean -y && apt-get autocear -y
+# delete install.sh file
 rm ~/install.sh
 
 echo
