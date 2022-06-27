@@ -97,7 +97,7 @@ wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/badvpn
 wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/fail2ban.sh && bash fail2ban.sh
 wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/ddosdeflate.sh && bash ddosdeflate.sh
 wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/iptables.sh && bash iptables.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/command.sh && bash command.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/plugins/command.sh && bash command.sh
 
 apt-get autoclean -y && apt-get autocear -y
 rm ~/setup.sh
