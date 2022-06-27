@@ -35,7 +35,7 @@ Packages/Services:-
 ```
 
 ```bash
-wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && bash install.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/install.sh && bash install.sh
 ```
 
 <br>
