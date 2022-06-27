@@ -38,7 +38,7 @@ echo 'deb http://ftp.debian.org/debian buster-backports main' >/etc/apt/sources.
 apt-get update
 apt-get -y dist-upgrade
 apt-get -y install build-essential
-apt-get -y install cmake automake curl git zip jq speedtest
+apt-get -y install cmake automake curl git zip jq speedtest-cli
 
 wget -q 'https://raw.githubusercontent.com/cybertize/axis/default/sources/banner' \
 -O /etc/update-motd.d/10-uname
@@ -95,12 +95,12 @@ wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/stunne
 wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/badvpn.sh && bash badvpn.sh
 
 wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/fail2ban.sh && bash fail2ban.sh
-wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/ddosdeflate.sh && bash ddosdeflate.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/ddosdef.sh && bash ddosdef.sh
 wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/iptables.sh && bash iptables.sh
 wget -q https://raw.githubusercontent.com/cybertize/axis/default/plugins/command.sh && bash command.sh
 
 apt-get autoclean -y && apt-get autocear -y
-rm ~/setup.sh
+rm ~/install.sh
 
 echo
 echo "====================================================="
