@@ -41,9 +41,9 @@ acl Safe_ports port 488
 acl Safe_ports port 591
 acl Safe_ports port 777
 acl CONNECT method CONNECT
-acl NAME dst IPADDR
+acl $NAME dst $IPADDR
 
-http_access allow NAME
+http_access allow $NAME
 http_access deny !Safe_ports
 http_access deny CONNECT !SSL_ports
 http_access allow localhost
@@ -60,11 +60,7 @@ refresh_pattern ^ftp: 1440 20% 10080
 refresh_pattern ^gopher: 1440 0% 1440
 refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
-visible_hostname DOMAIN" >/etc/squid/squid.conf
-
-sed -e "s/DOMAIN/$DOMAIN/" /etc/squid/squid.conf
-sed -e "s/NAME/$NAME/g" /etc/squid/squid.conf
-sed -e "s/IPADDR/$IPADDR/" /etc/squid/squid.conf
+visible_hostname $DOMAIN" >/etc/squid/squid.conf
 
 # delete squid script
 rm ~/squid.sh
