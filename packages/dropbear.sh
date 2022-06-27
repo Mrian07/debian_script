@@ -15,9 +15,9 @@ echo
 
 export DEBIAN_FRONTEND=noninteractive
 
-apt-get -yqq install cryptsetup-initramfs &>/dev/null
-apt-get -yqq install dropbear &>/dev/null
-systemctl stop dropbear &>/dev/null
+apt-get -yqq install cryptsetup-initramfs
+apt-get -yqq install dropbear
+systemctl stop dropbear
 
 cp /etc/default/dropbear /etc/default/dropbear.orig
 
