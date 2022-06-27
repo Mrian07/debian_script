@@ -28,7 +28,7 @@ DROPBEAR_BANNER="/etc/issue.net"
 DROPBEAR_RSAKEY="/etc/dropbear/dropbear_rsa_host_key"
 DROPBEAR_DSSKEY="/etc/dropbear/dropbear_dss_host_key"
 DROPBEAR_ECDSAKEY="/etc/dropbear/dropbear_ecdsa_host_key"
-DROPBEAR_RECEIVE_WINDOW=65536' >/etc/default/dropbear.test
+DROPBEAR_RECEIVE_WINDOW=65536' >/etc/default/dropbear
 
 rm -f ~/dropbear.sh
 
