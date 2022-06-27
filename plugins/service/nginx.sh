@@ -7,11 +7,13 @@ function installPkg {
     case $getAnswer in
     [Yy])
       if [[ ! -f /etc/nginx/nginx.conf ]]; then
-        wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/nginx.sh && bash nginx.sh
+        wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/nginx.sh \
+        && chmod +x nginx.sh && ./nginx.sh
       fi
       systemctl stop nginx
       apt-get -y -qq --autoremove purge nginx
-      wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/nginx.sh && bash nginx.sh
+      wget -q https://raw.githubusercontent.com/cybertize/axis/default/packages/nginx.sh \
+      && chmod +x nginx.sh && ./nginx.sh
       ;;
     [Nn]) nginxMenu && break ;;
     esac
@@ -35,7 +37,7 @@ function uninstallPkg {
 function configurePkg {
   getPort=($(netstat -tlpn | grep nginx | grep -w 'tcp' | awk '{print $4}' | cut -d ':' -f 2))
   clear && echo
-  echo "Secara lalai nginx mengunakan port ${getPort[0]} untuk sambungan HTTP"
+  echo "Secara lalai nginx mengunakan port ${getPort[1]} untuk sambungan HTTP"
   while true; do
     read -p "Adakah anda mahu menukar port (Y/n)? " getAnswer
     case $getAnswer in
@@ -48,7 +50,7 @@ function configurePkg {
         fi
 
         systemctl stop nginx
-        sed -i "s|${getPort}|${readPortHTTP}|g" /etc/nginx/sites-enabled/default
+        sed -i "s|${getPort[1]}|${readPortHTTP}|g" /etc/nginx/sites-enabled/default
         systemctl start nginx
         echo "Perubahan telah dibuat" && break
       fi
@@ -58,7 +60,7 @@ function configurePkg {
   done
 
   clear && echo
-  echo "Secara lalai nginx mengunakan port ${getPort[1]} untuk sambungan HTTPS"
+  echo "Secara lalai nginx mengunakan port ${getPort[0]} untuk sambungan HTTPS"
   while true; do
     read -p "Adakah anda mahu menukar port (Y/n)? " getAnswer
     case $getAnswer in
@@ -71,7 +73,7 @@ function configurePkg {
         fi
 
         systemctl stop nginx
-        sed -i "s|${getPort}|${readPortHTTPS}|g" /etc/nginx/sites-enabled/default
+        sed -i "s|${getPort[0]}|${readPortHTTPS}|g" /etc/nginx/sites-enabled/default
         systemctl start nginx
         echo "Perubahan telah dibuat" && break
       fi
@@ -95,7 +97,7 @@ function detailPkg {
   echo " Name   : $unitName"
   echo " Desc   : $unitDesc"
   echo " Status : $isActive & $isEnable"
-  echo " Ports  : ${getPorts[0]}(http) | ${getPorts[1]}(https"
+  echo " Ports  : ${getPorts[1]}(http) | ${getPorts[0]}(https"
   echo "-------------------------------------------"
   echo "DICIPTA OLEH DOCTYPE, POWERED BY CYBERTIZE."
   echo "==========================================="
