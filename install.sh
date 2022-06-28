@@ -7,7 +7,7 @@ CLR="\e[0m"
 
 [[ -e /etc/os-release ]] && source /etc/os-release
 
-function root() {
+function previledge() {
   if [[ "$EUID" -ne 0 ]]; then
     echo -e "${RED}Skrip perlu dijalankan dengan root!${CLR}" && exit 1
   fi
@@ -141,7 +141,7 @@ function footer() {
 }
 
 function start_setup() {
-  root
+  previledge
   virtual
   distro
   header
