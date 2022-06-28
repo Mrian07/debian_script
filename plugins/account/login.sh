@@ -20,8 +20,8 @@ else
 fi
 
 echo
-if [ -f "/etc/openvpn/server/openvpn-tcp.log" ]; then
-	cat /etc/openvpn/server/openvpn-tcp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' >/tmp/vpn-login-tcp.txt
+if [ -f "/var/log/openvpn/status.log" ]; then
+	cat /var/log/openvpn/status.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' >/tmp/vpn-login-tcp.txt
 	cat /tmp/vpn-login-tcp.txt
 fi
 echo "-------------------------------------------"
