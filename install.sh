@@ -100,26 +100,35 @@ function dependencies() {
 }
 
 function packages() {
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/nginx.sh \
-  # && chmod +x nginx.sh && ./nginx.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/dropbear.sh \
-  # && chmod +x dropbear.sh && ./dropbear.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/openvpn.sh \
-  # && chmod +x openvpn.sh && ./openvpn.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/squid.sh \
-  # && chmod +x squid.sh && ./squid.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/stunnel.sh \
-  # && chmod +x stunnel.sh && ./stunnel.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/badvpn.sh \
-  # && chmod +x badvpn.sh && ./badvpn.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/fail2ban.sh \
-  # && chmod +x fail2ban.sh && ./fail2ban.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/ddosdef.sh \
-  # && chmod +x ddosdef.sh && ./ddosdef.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/iptables.sh \
-  # && chmod +x iptables.sh && ./iptables.sh
-  # wget -q https://raw.githubusercontent.com/cybertize/axis/dev/plugins/command.sh \
-  # && chmod +x command.sh && ./command.sh
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/nginx.sh
+  chmod +x nginx.sh && ./nginx.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/dropbear.sh
+  chmod +x dropbear.sh && ./dropbear.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/openvpn.sh
+  chmod +x openvpn.sh && ./openvpn.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/squid.sh
+  chmod +x squid.sh && ./squid.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/stunnel.sh
+  chmod +x stunnel.sh && ./stunnel.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/badvpn.sh
+  chmod +x badvpn.sh && ./badvpn.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/fail2ban.sh
+  chmod +x fail2ban.sh && ./fail2ban.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/ddosdef.sh
+  chmod +x ddosdef.sh && ./ddosdef.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/iptables.sh
+  chmod +x iptables.sh && ./iptables.sh
+
+  wget -q https://raw.githubusercontent.com/cybertize/axis/dev/plugins/command.sh
+  chmod +x command.sh && ./command.sh
 }
 
 function footer() {
