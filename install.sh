@@ -93,7 +93,7 @@ function dependencies() {
   apt-get -yqq install build-essential
   apt-get -yqq install automake cmake
   apt-get -yqq install zip curl git jq
-  apt-get -yqq install speedtest-cli
+  apt-get -yqq install vnstat speedtest-cli
 
   # echo "deb http://ftp.debian.org/debian buster-backports main" >/etc/apt/sources.list.d/buster-backports.list
   # apt-get -qq update
