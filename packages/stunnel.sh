@@ -8,8 +8,8 @@ CLR="\e[0m"
 COUNTRY=$(grep -sw 'COUNTRY' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 STATE=$(grep -sw 'STATE' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 REGION=$(grep -sw 'REGION' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
-ORG=$(grep -sw 'ORG' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
-UNIT=$(grep -sw 'UNIT' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
+ORG=$(grep -sw 'ORG' /usr/local/cybertize/.environment | cut -d '=' -f 2)
+UNIT=$(grep -sw 'UNIT' /usr/local/cybertize/.environment | cut -d '=' -f 2)
 NAME=$(grep -sw 'NAME' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 
 [[ -e /etc/os-release ]] && source /etc/os-release
