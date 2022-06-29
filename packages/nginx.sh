@@ -7,6 +7,8 @@ CLR="\e[0m"
 
 DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 
+[[ -e /etc/os-release ]] && source /etc/os-release
+
 function check_root() {
   if [[ "$EUID" -ne 0 ]]; then
     echo -e "${RED}Skrip perlu dijalankan dengan root!${CLR}" && exit 1
