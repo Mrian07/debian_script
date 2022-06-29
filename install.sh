@@ -87,6 +87,10 @@ echo "UNIT=\"${getUnit}\"" >>/usr/local/cybertize/.environment
 read -p " Sila masukkan nama Samaran: " getName
 echo "NAME=\"${getName}\"" >>/usr/local/cybertize/.environment
 
+echo "" >/etc/motd
+wget -q -O /etc/update-motd.d/10-uname 'https://raw.githubusercontent.com/cybertize/axis/dev/sources/banner'
+wget -q -O /etc/issue.net 'https://raw.githubusercontent.com/cybertize/axis/dev/sources/message'
+
 wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/nginx.sh
 chmod +x nginx.sh && ./nginx.sh
 
