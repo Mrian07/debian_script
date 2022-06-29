@@ -37,7 +37,6 @@ function head_section() {
   echo -e "▄─ █ █── █ █▀▀▀ █▀▄─ █▀▀▀ █▄▄▀ ▀▀▀▄▄ ─█ █─ █▄▄█ █ █ █"
   echo -e "█▄▄█ █▄▄▄█ █▄▄▄ █─ █ █▄▄▄ █─ █ █▄▄▄█ ─▀▄▀─ █─── █──▀█"
   echo -e "${RED}=====================================================${CLR}"
-  echo
 }
 
 function sshd_section() {
@@ -80,6 +79,5 @@ function login_user() {
   # v2ray_section
   # xray_section
   # wg0_section
-  foot_section
 }
 login_user
