@@ -14,7 +14,7 @@ REGION=$(grep -sw 'REGION' /usr/local/cybertize/.environment | cut -d '=' -f 2 |
 ORG=$(grep -sw 'ORG' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 UNIT=$(grep -sw 'UNIT' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 NAME=$(grep -sw 'NAME' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
-PROVIDER=$(grep -sw 'ISP' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
+ISP=$(grep -sw 'PROVIDER' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 CONTINENT=$(grep -sw 'CONTINENT' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 LOCATION=$(grep -sw 'LOCATION' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 
