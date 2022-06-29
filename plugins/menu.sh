@@ -58,8 +58,8 @@ echo -e " ${YELLOW}[13]${CLR} ➟ ${GREEN}Menu perkhidmatan Stunnel${CLR}"
 echo -e " ${YELLOW}[14]${CLR} ➟ ${GREEN}Menu perkhidmatan BadVPN${CLR}"
 echo -e " ${YELLOW}[15]${CLR} ➟ ${GREEN}Uji kelajuan pelayan${CLR}"
 echo -e " ${YELLOW}[00]${CLR} ➟ ${GREEN}Keluar dari menu${CLR}"
+echo
 echo -e "==========[${RED} CYBERTIZE SETUP SCRIPT V1.0.0 ${CLR}]=========="
-echo -e "=====[${RED} CREATED BY DOCTYPE, ALL RIGHT RESERVED. ${CLR}]====="
 echo
 
 read -p "Masukkan pilihan anda: " getChoice
