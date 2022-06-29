@@ -48,15 +48,16 @@ function head_section() {
 }
 
 function body_section() {
-  apt-get -y install stunnel4
+  apt-get -y install openssl stunnel4
   systemctl stop stunnel4
 
   openssl genrsa -out key.pem 2048
   openssl req -new -x509 -key key.pem -out cert.pem -days 365 \
-    -subj "/C=$COUNTRY/ST=$STATE/L=$REGION/O=$ORG/OU=$UNIT/CN=$NAME"
-  cat ~/key.pem ~/cert.pem >/etc/stunnel/stunnel.pem
-  rm -f ~/key.pem && rm -f ~/cert.pem
+  -subj "/C=$COUNTRY/ST=$STATE/L=$REGION/O=$ORG/OU=$UNIT/CN=$NAME"
+  cat ~/key.pem >/etc/stunnel/stunnel.pem
+  cat ~/cert.pem >>/etc/stunnel/stunnel.pem
   openssl dhparam 2048 >>/etc/stunnel/stunnel.pem
+  rm ~/key.pem && rm ~/cert.pem
 
   cat >/etc/stunnel/stunnel.conf <<-EOF
 cert = /etc/stunnel/stunnel.pem
