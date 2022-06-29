@@ -48,4 +48,6 @@ echo -e "${YELLOW}      DISK${CLR}:${GREEN} $DISK ${CLR}"
 echo -e "${YELLOW}  BANDWITH${CLR}:${GREEN} $BANDWITH Used ${CLR}"
 echo -e "${YELLOW}    UPTIME${CLR}:${GREEN} $UPTIME ${CLR}"
 echo
+echo -e "${RED}=====================================================${CLR}"
 echo -e "${GREEN}       CREATED BY DOCTYPE, ALL RIGHT RESERVED.       ${CLR}"
+echo -e "${RED}=====================================================${CLR}"
