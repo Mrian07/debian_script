@@ -63,6 +63,5 @@ function lists_user() {
   check_distro
   head_section
   body_section
-  foot_section
 }
 lists_user
