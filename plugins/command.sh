@@ -49,24 +49,66 @@ function body_section() {
     mkdir -p /usr/local/cybertize/plugins/server
   fi
 
-  wget -q -O /usr/local/bin/menu 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/menu.sh'
+  echo -ne "Downloading plugin menu... "
+  wget -q -O /usr/local/bin/menu 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/menu.sh'
   chmod +x /usr/local/bin/menu
+  echo -e "[DONE]"
 
-  wget -q -O /usr/local/cybertize/plugins/account/create.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/create.sh'
-  wget -q -O /usr/local/cybertize/plugins/account/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/renew.sh'
-  wget -q -O /usr/local/cybertize/plugins/account/login.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/login.sh'
-  wget -q -O /usr/local/cybertize/plugins/account/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/lists.sh'
-  wget -q -O /usr/local/cybertize/plugins/account/password.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/password.sh'
-  wget -q -O /usr/local/cybertize/plugins/account/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/lock.sh.sh'
-  wget -q -O /usr/local/cybertize/plugins/account/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/unlock.sh'
-  wget -q -O /usr/local/cybertize/plugins/account/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/account/delete.sh'
+  echo -ne "Downloading file create... "
+  wget -q -O /usr/local/cybertize/plugins/account/create.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/create.sh'
+  echo -e "[DONE]"
 
-  wget -q -O /usr/local/cybertize/plugins/service/nginx.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/service/nginx.sh'
-  wget -q -O /usr/local/cybertize/plugins/service/dropbear.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/service/dropbear.sh'
-  wget -q -O /usr/local/cybertize/plugins/service/openvpn.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/service/openvpn.sh'
-  wget -q -O /usr/local/cybertize/plugins/service/squid.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/service/squid.sh'
-  wget -q -O /usr/local/cybertize/plugins/service/stunnel.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/service/stunnel.sh'
-  wget -q -O /usr/local/cybertize/plugins/service/badvpn.sh 'https://raw.githubusercontent.com/cybertize/axis/default/plugins/service/badvpn.sh'
+  echo -ne "Downloading file renew... "
+  wget -q -O /usr/local/cybertize/plugins/account/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/renew.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file login... "
+  wget -q -O /usr/local/cybertize/plugins/account/login.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/login.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file lists... "
+  wget -q -O /usr/local/cybertize/plugins/account/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lists.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file password... "
+  wget -q -O /usr/local/cybertize/plugins/account/password.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/password.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file lock... "
+  wget -q -O /usr/local/cybertize/plugins/account/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lock.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file unlock... "
+  wget -q -O /usr/local/cybertize/plugins/account/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/unlock.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file delete... "
+  wget -q -O /usr/local/cybertize/plugins/account/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/delete.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file nginx... "
+  wget -q -O /usr/local/cybertize/plugins/service/nginx.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/service/nginx.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file dropbear... "
+  wget -q -O /usr/local/cybertize/plugins/service/dropbear.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/service/dropbear.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file openvpn... "
+  wget -q -O /usr/local/cybertize/plugins/service/openvpn.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/service/openvpn.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file squid... "
+  wget -q -O /usr/local/cybertize/plugins/service/squid.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/service/squid.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file stunnel... "
+  wget -q -O /usr/local/cybertize/plugins/service/stunnel.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/service/stunnel.sh'
+  echo -e "[DONE]"
+
+  echo -ne "Downloading file badvpn... "
+  wget -q -O /usr/local/cybertize/plugins/service/badvpn.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/service/badvpn.sh'
+  echo -e "[DONE]"
 }
 
 function foot_section() {
