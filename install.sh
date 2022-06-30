@@ -42,6 +42,13 @@ apt-get -yqq install automake cmake
 apt-get -yqq install zip curl git jq
 apt-get -yqq install vnstat speedtest-cli
 
+echo "net.ipv4.ip_forward=1
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv4.tcp_mtu_probing = 1
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = cubic" >>/etc/sysctl.conf
+sysctl -p &>/dev/null
+
 # echo "deb http://ftp.debian.org/debian buster-backports main" >/etc/apt/sources.list.d/buster-backports.list
 # apt-get -qq update
 
