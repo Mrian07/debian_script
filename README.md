@@ -35,7 +35,8 @@ Packages/Services:-
 ```
 
 ```bash
-wget -q https://raw.githubusercontent.com/cybertize/axis/dev/install.sh && bash install.sh
+wget -q https://raw.githubusercontent.com/cybertize/axis/dev/install.sh
+chmod u+x install.sh && ./install.sh
 ```
 
 <br>
