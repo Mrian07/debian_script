@@ -10,8 +10,8 @@ WHITE="\e[37;1m"
 CLR="\e[0m"
 
 IPADDR=$(grep -sw 'IPADDR' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
-DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
-NAME=$(grep -sw 'NAME' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
+# DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
+# NAME=$(grep -sw 'NAME' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
 
 [[ -e /etc/os-release ]] && source /etc/os-release
 
@@ -44,8 +44,8 @@ acl localnet src 100.64.0.0/10
 acl localnet src 169.254.0.0/16
 acl localnet src 172.16.0.0/12
 acl localnet src 192.168.0.0/16
-acl localnet src fc00::/7
-acl localnet src fe80::/10
+# acl localnet src fc00::/7
+# acl localnet src fe80::/10
 
 acl SSL_ports port 443
 acl Safe_ports port 80
@@ -59,9 +59,9 @@ acl Safe_ports port 488
 acl Safe_ports port 591
 acl Safe_ports port 777
 acl CONNECT method CONNECT
-acl $NAME dst $IPADDR
+acl cybertize dst $IPADDR
 
-http_access allow $NAME
+http_access allow cybertize
 http_access deny !Safe_ports
 http_access deny CONNECT !SSL_ports
 http_access allow localhost
@@ -78,7 +78,7 @@ refresh_pattern ^ftp: 1440 20% 10080
 refresh_pattern ^gopher: 1440 0% 1440
 refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
-visible_hostname $NAME" >/etc/squid/squid.conf
+visible_hostname cybertize" >/etc/squid/squid.conf
 }
 
 function foot() {
