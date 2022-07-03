@@ -9,12 +9,12 @@ CYAN="\e[36;1m"
 WHITE="\e[37;1m"
 CLR="\e[0m"
 
-COUNTRY=$(grep -sw 'COUNTRY' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
-STATE=$(grep -sw 'STATE' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
-REGION=$(grep -sw 'REGION' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
+COUNTRY=$(grep -sw 'COUNTRY' /usr/local/cybertize/.environment | cut -d '=' -f 2)
+STATE=$(grep -sw 'STATE' /usr/local/cybertize/.environment | cut -d '=' -f 2)
+REGION=$(grep -sw 'REGION' /usr/local/cybertize/.environment | cut -d '=' -f 2)
 ORG=$(grep -sw 'ORG' /usr/local/cybertize/.environment | cut -d '=' -f 2)
 UNIT=$(grep -sw 'UNIT' /usr/local/cybertize/.environment | cut -d '=' -f 2)
-NAME=$(grep -sw 'NAME' /usr/local/cybertize/.environment | cut -d '=' -f 2 | tr -d '"')
+NAME=$(grep -sw 'NAME' /usr/local/cybertize/.environment | cut -d '=' -f 2)
 
 [[ -e /etc/os-release ]] && source /etc/os-release
 
@@ -44,10 +44,10 @@ function body() {
   openssl genrsa -out key.pem 2048
   openssl req -new -x509 -key key.pem -out cert.pem -days 365 \
   -subj "/C=$COUNTRY/ST=$STATE/L=$REGION/O=$ORG/OU=$UNIT/CN=$NAME"
-  cat ~/key.pem >/etc/stunnel/stunnel.pem
-  cat ~/cert.pem >>/etc/stunnel/stunnel.pem
+  cat key.pem >/etc/stunnel/stunnel.pem
+  cat cert.pem >>/etc/stunnel/stunnel.pem
   openssl dhparam 2048 >>/etc/stunnel/stunnel.pem
-  rm ~/key.pem && rm ~/cert.pem
+  rm key.pem && rm cert.pem
 
   cat >/etc/stunnel/stunnel.conf <<-EOF
 cert = /etc/stunnel/stunnel.pem
