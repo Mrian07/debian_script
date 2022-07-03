@@ -103,30 +103,8 @@ function body() {
   echo -e "[DONE]"
 }
 
-function foot() {
-  # delete command.sh script
-  rm ~/command.sh
-
-  echo
-  echo -e "${WHITE}=====================================================${CLR}"
-  echo -e "${BLUE}── █ █▀▀▀█ █▀▀▀ █─▄▀ █▀▀▀ █▀▀█ █▀▀▀█ █── █ █▀▀█ █▄─ █${CLR}"
-  echo -e "${BLUE}▄─ █ █── █ █▀▀▀ █▀▄─ █▀▀▀ █▄▄▀ ▀▀▀▄▄ ─█ █─ █▄▄█ █ █ █${CLR}"
-  echo -e "${BLUE}█▄▄█ █▄▄▄█ █▄▄▄ █─ █ █▄▄▄ █─ █ █▄▄▄█ ─▀▄▀─ █─── █──▀█${CLR}"
-  echo -e "${WHITE}=====================================================${CLR}"
-  echo
-  echo -e "${YELLOW} Name${CLR}:${GREEN} command.sh                                    ${CLR}"
-  echo -e "${YELLOW} Desc${CLR}:${GREEN} Script to install command automatic           ${CLR}"
-  echo -e "${YELLOW} Auth${CLR}:${GREEN} Doctype <cybertizedevel@gmail.com>            ${CLR}"
-  echo
-  echo -e "${WHITE}=====================================================${CLR}"
-  echo -e "${WHITE}=======[${CLR} ${BLUE}SKRIP OLEH DOCTYPE, HAK CIPTA 2022.${CLR} ${WHITE}]=======${CLR}"
-  echo -e "${WHITE}=====================================================${CLR}"
-  echo
-}
-
 function install_command() {
   head
   body
-  foot
 }
 install_command
