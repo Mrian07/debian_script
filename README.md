@@ -22,7 +22,10 @@ Kami tahu bahawa ISP anda telah menetapkan had data yang boleh anda gunakan, den
 Packages/Services:-
 - dropbear
 - openvpn
+- shadowsocks-libev
 - squid
+- obfsproxy
+- haproxy
 - stunnel
 - badvpn
 - nginx
