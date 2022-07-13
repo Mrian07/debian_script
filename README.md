@@ -7,7 +7,7 @@ Pelayan VPN kami dibina untuk kelajuan. Anda akan segera menyedari bahawa pelaya
 Nyahsekat mana-mana tapak web atau perkhidmatan, kami tidak menyekat mana-mana port atau tapak web supaya anda boleh bermain apa-apa permainan atau menggunakan sebarang program.
 
 ### **Strong Encryption**
-Kami memahami betapa pentingnya untuk anda menjadi anonymous dan secure. Semua trafik antara anda dan VPN disulitkan menggunakan teknik penyulitan terbaik seperti AES-256 dan AES-128.
+Kami tahu pentingnya untuk anda menjadi anonymous dan secure. Semua trafik antara anda dan VPN disulitkan menggunakan teknik penyulitan terbaik seperti AES-256 dan AES-128.
 
 ### **Unlimited Bandwidth**
 Nikmati kelajuan tanpa had dan trafik tanpa had, sama ada anda ingin menonton filem, memuat turun atau menjalankan sebarang aplikasi.
