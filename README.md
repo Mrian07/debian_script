@@ -20,17 +20,19 @@ Kami tahu bahawa ISP anda telah menetapkan had data yang boleh anda gunakan, den
 
 ```
 Packages/Services:-
+- nginx
 - dropbear
 - openvpn
 - shadowsocks-libev
 - squid
-- obfsproxy
 - haproxy
+- simple-obfs
+- obfsproxy
 - stunnel
 - badvpn
-- nginx
 - fail2ban
 - ddos-deflate
+- anti-ddos
 - torrent-block
 - iptables
 ```
