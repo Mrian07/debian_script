@@ -33,6 +33,7 @@ apt-get -y install obfsproxy
 systemctl stop openvpn
 systemctl disable openvpn
 
+openssl rand -out /usr/share/easy-rsa/pki/.rnd -hex 256
 cd /usr/share/easy-rsa
 ./easyrsa --batch init-pki
 ./easyrsa --batch build-ca nopass
