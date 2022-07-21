@@ -76,9 +76,7 @@ EOFTCP
 echo "# ----------------------------
 # OPENVPN BY CYBERTIZE
 # ----------------------------
-setenv FRIENDLY_NAME "${DOMAIN}_TCP"
 setenv CLIENT_CERT 0
-
 client
 dev tun
 proto tcp
@@ -127,9 +125,7 @@ EOFTLS
 echo "# ----------------------------
 # OPENVPN BY CYBERTIZE
 # ----------------------------
-setenv FRIENDLY_NAME "${DOMAIN}_TLS"
 setenv CLIENT_CERT 0
-
 client
 dev tun
 proto tcp
@@ -186,9 +182,7 @@ EOFOBFS
   echo "# ----------------------------
 # OPENVPN BY CYBERTIZE
 # ----------------------------
-setenv FRIENDLY_NAME "${DOMAIN}_OBFS"
 setenv CLIENT_CERT 0
-
 client
 tls-client
 dev tun
