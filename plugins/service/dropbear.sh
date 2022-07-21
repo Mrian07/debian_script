@@ -30,11 +30,15 @@ function install {
     case $getAnswer in
     [Yy])
       if [[ ! -f /etc/default/dropbear ]]; then
-        wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/dropbear.sh && bash dropbear.sh
+        wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/dropbear.sh \
+        && chmod +x dropbear.sh && ./dropbear.sh
       fi
       systemctl stop dropbear
-      apt-get -y -qq purge --autoremove dropbear
-      wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/dropbear.sh && bash dropbear.sh
+      apt-get -y -qq purge --autoremove dropbear && sleep 3
+      echo -en "${YELLOW}Pasang dan Konfigurasi pakej dropbear... ${CLR}"
+      wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/dropbear.sh \
+      && chmod +x dropbear.sh && ./dropbear.sh &>/dev/null
+      echo -e "${GREEN}[ DONE ]${CLR}" && exit 0
       ;;
     [Nn]) _menu ;;
     esac
@@ -47,8 +51,9 @@ function uninstall {
     case $getAnswer in
     [Yy])
       systemctl stop dropbear
-      apt-get -y -qq purge --autoremove dropbear
-      echo "Bersihkan & Keluarkan pakej dropbear" && exit 0
+      echo -en "${YELLOW}Nyahpasang dan Bersihkan pakej dropbear... ${CLR}"
+      apt-get -y -qq purge --auto-remove dropbear
+      echo -e "${GREEN}[ DONE ]${CLR}" && exit 0
       ;;
     [Nn]) _menu ;;
     esac
@@ -56,53 +61,53 @@ function uninstall {
 }
 
 function configure {
-  getPort=$(grep -w 'DROPBEAR_PORT' /etc/default/dropbear | cut -d '=' -f 2)
+  tcpPort=$(grep -w 'DROPBEAR_PORT' /etc/default/dropbear | cut -d '=' -f 2)
   clear && echo
-  echo "Secara lalai perkhidmatan dropbear mengunakan port $getPort"
+  echo -e "${MAGENTA}Secara lalai perkhidmatan dropbear mengunakan port${CLR} ${GREEN}$tcpPort${CLR}"
   while true; do
     read -p "Adakah anda mahu menukar port (Y/n)? " getAnswer
     case $getAnswer in
     [Yy])
-      read -p "Masukkan port baharu: " readPort
-      if [[ ! -z $readPort && $readPort =~ ^[0-9]+$ ]]; then
-        checkPort=$(lsof -i:$readPort | wc -l)
+      read -p "Masukkan port baharu: " readPortTCP
+      if [[ ! -z $readPortTCP && $readPortTCP =~ ^[0-9]+$ ]]; then
+        checkPort=$(lsof -i :$readPortTCP | wc -l)
         if [[ $checkPort -ne 0 ]]; then
-          echo "Port sudah digunakan!" && break
+          echo -e "${RED}Port sudah digunakan!${CLR}"
+          read -p "Masukkan semula port baharu: " readPortTCP
         fi
 
         systemctl stop dropbear
-        sed -i "s|${getPort}|${readPort}|g" /etc/default/dropbear
+        sed -i "s|${tcpPort}|${readPortTCP}|g" /etc/default/dropbear
         systemctl start dropbear
-        echo "Perubahan telah dibuat" && break
+        echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
       fi
       ;;
-    [Nn]) echo "Tiada perubahan dibuat" && break ;;
+    [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
     esac
   done
 
   tlsPort=$(grep -w '\-p' /etc/default/dropbear | cut -d ' ' -f 2 | tr -d '"')
   clear && echo
-  echo "Secara lalai dropbear menggunakan $tlsPort untuk sambungan stunnel"
+  echo -e "${MAGENTA}Secara lalai dropbear menggunakan${CLR} ${GREEN}$tlsPort${CLR} ${MAGENTA}untuk sambungan stunnel${CLR}"
   while true; do
     read -p "Adakah anda mahu menukar port (Y/n)? " getAnswer
     case $getAnswer in
     [Yy])
-      read -p "Masukkan port baharu: " readPort
-      if [[ ! -z $readPort && $readPort =~ ^[0-9]+$ ]]; then
-        checkPort=$(lsof -i:$readPort | wc -l)
+      read -p "Masukkan port baharu: " readPortTLS
+      if [[ ! -z $readPortTLS && $readPortTLS =~ ^[0-9]+$ ]]; then
+        checkPort=$(lsof -i :$readPortTLS | wc -l)
         if [[ $checkPort -ne 0 ]]; then
-          echo "Port sudah digunakan!" && break
+          echo -e "${RED}Port sudah digunakan!${CLR}"
+          read -p "Masukkan semula port baharu: " readPortTLS
         fi
 
         systemctl stop dropbear
-        sed -i "s|${tlsPort}|${readPort}|g" /etc/default/dropbear
+        sed -i "s|${tlsPort}|${readPortTLS}|g" /etc/default/dropbear
         systemctl start dropbear
-        echo "Perubahan telah dibuat" && break
+        echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
       fi
       ;;
-    [Nn])
-      _menu && break
-      ;;
+    [Nn]) _menu && break ;;
     esac
   done
 }
