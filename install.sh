@@ -9,12 +9,6 @@ CYAN="\e[36;1m"
 WHITE="\e[37;1m"
 CLR="\e[0m"
 
-_center() {
-  local len=$(echo $1 | wc -m)
-  echo -e "\e[$(( ($(tput cols) - $len) / 2))G\e[37;1m $1 \e[0m"
-  return 0
-}
-
 [[ -e /etc/os-release ]] && source /etc/os-release
 
 if [[ "$EUID" -ne 0 ]]; then
@@ -170,7 +164,6 @@ wget -q https://raw.githubusercontent.com/cybertize/axis/dev/plugins/command.sh 
 && chmod +x command.sh && ./command.sh
 
 rm ~/install.sh
-echo && clear
 echo -e "${BLUE}░█▀▀█ ░█──░█ ░█▀▀█ ░█▀▀▀ ░█▀▀█ ▀▀█▀▀ ▀█▀ ░█▀▀▀█ ░█▀▀▀${CLR}"
 echo -e "${BLUE}░█─── ░█▄▄▄█ ░█▀▀▄ ░█▀▀▀ ░█▄▄▀ ─░█── ░█─ ─▄▄▄▀▀ ░█▀▀▀${CLR}"
 echo -e "${BLUE}░█▄▄█ ──░█── ░█▄▄█ ░█▄▄▄ ░█─░█ ─░█── ▄█▄ ░█▄▄▄█ ░█▄▄▄${CLR}"
