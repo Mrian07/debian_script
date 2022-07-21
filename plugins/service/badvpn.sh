@@ -30,8 +30,8 @@ fi
 
 function install {
   while true; do
-    read -p "Teruskan dengan pemasangan semula? [Y/n] " readYesNo
-    case $_readYesNo in
+    read -p "Teruskan dengan pemasangan semula? [Y/n] " getAnswer
+    case $getAnswer in
     [Yy])
       if [[ ! -f /usr/local/bin/badvpn-udpgw ]]; then
         wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/badvpn.sh
@@ -40,7 +40,7 @@ function install {
       systemctl stop badvpn-udpgw
       systemctl disable badvpn-udpgw
       rm -f /usr/local/bin/badvpn-udpgw
-      wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/squid.sh
+      wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/badvpn.sh
       chmod +x badvpn.sh && ./badvpn.sh
       ;;
     [Nn]) _menu && break ;;
@@ -50,8 +50,8 @@ function install {
 
 function uninstall {
   while true; do
-    read -r -p "Adakah anda pasti mahu menyahpasang badvpn? [Y/n] " _readYesNo
-    case $_readYesNo in
+    read -r -p "Adakah anda pasti mahu menyahpasang badvpn? [Y/n] " getAnswer
+    case $getAnswer in
     [Yy])
       systemctl stop badvpn-udpgw
       systemctl disable badvpn-udpgw
@@ -65,7 +65,30 @@ function uninstall {
 }
 
 function configure {
+  getPort=$(grep 'ExecStart' /etc/systemd/system/badvpn-udpgw.service | awk '{print $3}' | cut -d ':' -f 2)
+  clear && echo
+  echo "Secara lalai badvpn-udpgw menggunakan port $getPort"
+  while true; do
+    read -p "Adakah anda mahu menukar port [Y/n]? " readYesNo
+    case $readYesNo in
+    [Yy])
+      read -r -p "Masukkan port baharu: " readPort
+      if [[ ! -z $readPort && $readPort =~ ^[0-9]+$ ]]; then
+        checkPort=$(lsof -i:$readPort | wc -l)
+        if [[ $checkPort -ne 0 ]]; then
+          echo "Port sudah digunakan!"
+          read -r -p "Masukkan port baharu: " readPort
+        fi
 
+        systemctl stop badvpn-udpgw
+        sed -i "s|$getPort|$readPort|g" /etc/systemd/system/badvpn-udpgw.service
+        systemctl start badvpn-udpgw
+      fi
+      echo "Perubahan telah dibuat" && break
+      ;;
+    [Nn]) _menu && break ;;
+    esac
+  done
 }
 
 function detail {
