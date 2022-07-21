@@ -64,18 +64,20 @@ echo -e " ${YELLOW}[26]${CLR} ➟ ${GREEN}Menu Dropbear${CLR}"      # [O]
 echo -e " ${YELLOW}[27]${CLR} ➟ ${GREEN}Menu OpenVPN${CLR}"       # [O]
 echo -e " ${YELLOW}[28]${CLR} ➟ ${GREEN}Menu Shadowsocks${CLR}"   # [O]
 echo -e " ${YELLOW}[29]${CLR} ➟ ${GREEN}Menu Squid${CLR}"         # [O]
-echo -e " ${YELLOW}[30]${CLR} ➟ ${GREEN}Menu Stunnel${CLR}"       # [O]
-echo -e " ${YELLOW}[31]${CLR} ➟ ${GREEN}Menu BadVPN${CLR}"        # [O]
+echo -e " ${YELLOW}[30]${CLR} ➟ ${GREEN}Menu ohpserver${CLR}"     # [O]
+echo -e " ${YELLOW}[31]${CLR} ➟ ${GREEN}Menu websocket${CLR}"     # [O]
+echo -e " ${YELLOW}[32]${CLR} ➟ ${GREEN}Menu Stunnel${CLR}"       # [O]
+echo -e " ${YELLOW}[33]${CLR} ➟ ${GREEN}Menu BadVPN${CLR}"        # [O]
 
 echo
 echo -e "${BLUE}SERVER${CLR}"
-echo -e " ${YELLOW}[32]${CLR} ➟ ${GREEN}Speedtest${CLR}"          # [O]
-# echo -e " ${YELLOW}[33]${CLR} ➟ ${GREEN}TcpBBR${CLR}"             # [O]
-# echo -e " ${YELLOW}[34]${CLR} ➟ ${GREEN}WonderShaper${CLR}"       # [O]
-# echo -e " ${YELLOW}[35]${CLR} ➟ ${GREEN}Add Domain${CLR}"         # [X]
-# echo -e " ${YELLOW}[36]${CLR} ➟ ${GREEN}Remove Domain${CLR}"      # [X]
-# echo -e " ${YELLOW}[37]${CLR} ➟ ${GREEN}Backup${CLR}"             # [X]
-# echo -e " ${YELLOW}[38]${CLR} ➟ ${GREEN}Restore${CLR}"            # [X]
+echo -e " ${YELLOW}[34]${CLR} ➟ ${GREEN}Speedtest${CLR}"          # [O]
+# echo -e " ${YELLOW}[35]${CLR} ➟ ${GREEN}TcpBBR${CLR}"             # [O]
+# echo -e " ${YELLOW}[36]${CLR} ➟ ${GREEN}WonderShaper${CLR}"       # [O]
+# echo -e " ${YELLOW}[37]${CLR} ➟ ${GREEN}Add Domain${CLR}"         # [X]
+# echo -e " ${YELLOW}[38]${CLR} ➟ ${GREEN}Remove Domain${CLR}"      # [X]
+# echo -e " ${YELLOW}[39]${CLR} ➟ ${GREEN}Backup${CLR}"             # [X]
+# echo -e " ${YELLOW}[40]${CLR} ➟ ${GREEN}Restore${CLR}"            # [X]
 echo
 echo -e " ${YELLOW}[00]${CLR} ➟ ${GREEN}Keluar dari menu${CLR}"
 echo
@@ -88,46 +90,48 @@ echo
 read -p "Masukkan pilihan anda: " getChoice
 case $getChoice in
   # dropbear
-  01) ./usr/local/cybertize/plugins/dropbear/create.sh ;;
-  02) ./usr/local/cybertize/plugins/dropbear/renew.sh ;;
-  03) ./usr/local/cybertize/plugins/dropbear/login.sh ;;
-  04) ./usr/local/cybertize/plugins/dropbear/lists.sh ;;
-  05) ./usr/local/cybertize/plugins/dropbear/password.sh ;;
-  06) ./usr/local/cybertize/plugins/dropbear/lock.sh ;;
-  07) ./usr/local/cybertize/plugins/dropbear/unlock.sh ;;
-  08) ./usr/local/cybertize/plugins/dropbear/delete.sh ;;
+  01) bash /usr/local/cybertize/plugins/dropbear/create.sh ;;
+  02) bash /usr/local/cybertize/plugins/dropbear/renew.sh ;;
+  03) bash /usr/local/cybertize/plugins/dropbear/login.sh ;;
+  04) bash /usr/local/cybertize/plugins/dropbear/lists.sh ;;
+  05) bash /usr/local/cybertize/plugins/dropbear/password.sh ;;
+  06) bash /usr/local/cybertize/plugins/dropbear/lock.sh ;;
+  07) bash /usr/local/cybertize/plugins/dropbear/unlock.sh ;;
+  08) bash /usr/local/cybertize/plugins/dropbear/delete.sh ;;
 
   # openvpn
-  09) ./usr/local/cybertize/plugins/openvpn/create.sh ;;
-  10) ./usr/local/cybertize/plugins/openvpn/renew.sh ;;
-  11) ./usr/local/cybertize/plugins/openvpn/login.sh ;;
-  12) ./usr/local/cybertize/plugins/openvpn/lists.sh ;;
-  13) ./usr/local/cybertize/plugins/openvpn/password.sh ;;
-  14) ./usr/local/cybertize/plugins/openvpn/lock.sh ;;
-  15) ./usr/local/cybertize/plugins/openvpn/unlock.sh ;;
-  16) ./usr/local/cybertize/plugins/openvpn/delete.sh ;;
+  09) bash /usr/local/cybertize/plugins/openvpn/create.sh ;;
+  10) bash /usr/local/cybertize/plugins/openvpn/renew.sh ;;
+  11) bash /usr/local/cybertize/plugins/openvpn/login.sh ;;
+  12) bash /usr/local/cybertize/plugins/openvpn/lists.sh ;;
+  13) bash /usr/local/cybertize/plugins/openvpn/password.sh ;;
+  14) bash /usr/local/cybertize/plugins/openvpn/lock.sh ;;
+  15) bash /usr/local/cybertize/plugins/openvpn/unlock.sh ;;
+  16) bash /usr/local/cybertize/plugins/openvpn/delete.sh ;;
 
   # shadowsocks
-  17) ./usr/local/cybertize/plugins/shadowsocks/create.sh ;;
-  18) ./usr/local/cybertize/plugins/shadowsocks/renew.sh ;;
-  19) ./usr/local/cybertize/plugins/shadowsocks/login.sh ;;
-  20) ./usr/local/cybertize/plugins/shadowsocks/lists.sh ;;
-  21) ./usr/local/cybertize/plugins/shadowsocks/password.sh ;;
-  22) ./usr/local/cybertize/plugins/shadowsocks/disable.sh ;;
-  23) ./usr/local/cybertize/plugins/shadowsocks/enable.sh ;;
-  24) ./usr/local/cybertize/plugins/shadowsocks/delete.sh ;;
+  17) bash /usr/local/cybertize/plugins/shadowsocks/create.sh ;;
+  18) bash /usr/local/cybertize/plugins/shadowsocks/renew.sh ;;
+  19) bash /usr/local/cybertize/plugins/shadowsocks/login.sh ;;
+  20) bash /usr/local/cybertize/plugins/shadowsocks/lists.sh ;;
+  21) bash /usr/local/cybertize/plugins/shadowsocks/password.sh ;;
+  22) bash /usr/local/cybertize/plugins/shadowsocks/disable.sh ;;
+  23) bash /usr/local/cybertize/plugins/shadowsocks/enable.sh ;;
+  24) bash /usr/local/cybertize/plugins/shadowsocks/delete.sh ;;
 
   # service
-  25) ./usr/local/cybertize/plugins/service/nginx.sh ;;
-  26) ./usr/local/cybertize/plugins/service/dropbear.sh ;;
-  27) ./usr/local/cybertize/plugins/service/openvpn.sh ;;
-  28) ./usr/local/cybertize/plugins/service/Shadowsocks.sh ;;
-  29) ./usr/local/cybertize/plugins/service/squid.sh ;;
-  30) ./usr/local/cybertize/plugins/service/stunnel.sh ;;
-  31) ./usr/local/cybertize/plugins/service/badvpn.sh ;;
+  25) bash /usr/local/cybertize/plugins/service/nginx.sh ;;
+  26) bash /usr/local/cybertize/plugins/service/dropbear.sh ;;
+  27) bash /usr/local/cybertize/plugins/service/openvpn.sh ;;
+  28) bash /usr/local/cybertize/plugins/service/Shadowsocks.sh ;;
+  29) bash /usr/local/cybertize/plugins/service/squid.sh ;;
+  30) bash /usr/local/cybertize/plugins/service/ohpserver.sh ;;
+  31) bash /usr/local/cybertize/plugins/service/websocket.sh ;;
+  32) bash /usr/local/cybertize/plugins/service/stunnel.sh ;;
+  33) bash /usr/local/cybertize/plugins/service/badvpn.sh ;;
 
   # server
-  32) speedtest ;;
+  34) speedtest ;;
 
   # other
   00) clear && exit 0 ;;
