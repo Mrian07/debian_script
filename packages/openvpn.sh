@@ -95,7 +95,7 @@ echo "</ca>" >>/etc/openvpn/client/client-tcp.ovpn
 cp /etc/openvpn/client/client-tcp.ovpn /var/www/html/client-tcp.ovpn
 
 cat >/etc/openvpn/stunnel.conf <<-EOFTLS
-port 994
+port 5000
 proto tcp
 dev tun
 ca /etc/openvpn/pki/ca.crt
@@ -133,7 +133,7 @@ client
 dev tun
 proto tcp
 comp-lzo
-remote $DOMAIN 994
+remote $DOMAIN 5000
 http-proxy $DOMAIN 3128
 remote-cert-tls server
 cipher AES-128-GCM
@@ -149,7 +149,7 @@ cat >/etc/openvpn/obfsproxy.conf <<-EOFOBFS
 # ----------------------------
 # OPENVPN BY CYBERTIZE
 # ----------------------------
-port 587
+port 994
 proto tcp
 dev tun
 ca /etc/openvpn/pki/ca.crt
@@ -193,10 +193,10 @@ tls-client
 dev tun
 proto tcp
 comp-lzo
-remote $DOMAIN 587
+remote $DOMAIN 994
 remote-cert-tls server
 cipher AES-256-GCM
-socks-proxy 127.0.0.1 1587
+socks-proxy 127.0.0.1 1 5870
 auth-user-pass" >/etc/openvpn/client/client-obfs.ovpn
 
 echo "" >>/etc/openvpn/client/client-obfs.ovpn
