@@ -60,13 +60,14 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=ss-manager --manager-address /var/run/ss-manager.sock --executable ss-server -c /etc/shadowsocks-libev/obfs-http.json -f /var/run/ss-http.pid
+ExecStart=/usr/bin/ss-manager --executable /usr/bin/ss-server -c /etc/shadowsocks-libev/obfs-http.json
 Restart=on-failure
 RestartSec=5
 
 [Install]
-WantedBy=multi-user.target" >/etc/systemd/system/sserver-http.service
-systemctl enable sserver-http
+WantedBy=multi-user.target" >/etc/systemd/system/shadowsocks-http.service
+systemctl daemon-reload
+systemctl enable shadowsocks-http
 
 cat >/etc/shadowsocks-libev/obfs-tls.json <<-EOF
 {
@@ -89,13 +90,14 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=ss-manager --manager-address /var/run/ss-manager.sock --executable ss-server -c /etc/shadowsocks-libev/obfs-http.json -f /var/run/ss-tls.pid
+ExecStart=/usr/bin/ss-manager --executable /usr/bin/ss-server -c /etc/shadowsocks-libev/obfs-http.json
 Restart=on-failure
 RestartSec=5
 
 [Install]
-WantedBy=multi-user.target" >/etc/systemd/system/sserver-tls.service
-systemctl enable sserver-tls
+WantedBy=multi-user.target" >/etc/systemd/system/shadowsocks-tls.service
+systemctl daemon-reload
+systemctl enable shadowsocks-tls
 
 if [[ ! -f /etc/shadowsocks-libev/.accounts ]]; then
   touch /etc/shadowsocks-libev/.accounts
