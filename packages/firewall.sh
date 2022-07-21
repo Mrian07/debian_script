@@ -74,11 +74,6 @@ sleep 3
 export DEBIAN_FRONTEND=noninteractive
 apt-get -yqq install iptables-persistent
 
-iptables -A INPUT -i eth0 -s 127.0.0.1 -j DROP
-iptables -A FORWARD -i eth0 -s 127.0.0.1 -j DROP
-iptables -A INPUT -i eth0 -d 127.0.0.1 -j DROP
-iptables -A FORWARD -i eth0 -d 127.0.0.1 -j DROP
-
 iptables -A FORWARD -i eth0 -s 192.168.0.0/16 -j DROP
 iptables -A FORWARD -i eth0 -s 172.16.0.0/12 -j DROP
 iptables -A FORWARD -i eth0 -s 169.254.0.0/16 -j DROP
@@ -95,7 +90,7 @@ iptables -A FORWARD -p udp --sport 137:139 -o eth0 -j DROP
 iptables -A OUTPUT -p tcp --sport 137:139 -o eth0 -j DROP
 iptables -A OUTPUT -p udp --sport 137:139 -o eth0 -j DROP
 
-iptables -A FORWARD ! -s 10.20.0.0/24 -i eth1 -j DROP
+iptables -A FORWARD ! -s 10.20.0.0/24 -i eth0 -j DROP
 
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
@@ -106,21 +101,21 @@ iptables -A INPUT -d 127.0.0.1 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
-# iptables -A INPUT -p tcp --dport http -j ACCEPT
-# iptables -A INPUT -p tcp --dport http-alt -j ACCEPT
-# iptables -A INPUT -p tcp --dport https -j ACCEPT
-# iptables -A INPUT -p tcp --dport ssh -j ACCEPT
-# iptables -A INPUT -p tcp --dport 2020 -j ACCEPT
-# iptables -A INPUT -p tcp --dport 2200 -j ACCEPT
-# iptables -A INPUT -p tcp --dport 5000 -j ACCEPT
-# iptables -A INPUT -p tcp --dport 1194 -j ACCEPT
-# iptables -A INPUT -p tcp --dport 994 -j ACCEPT
+#iptables -A INPUT -p tcp --dport http -j ACCEPT
+#iptables -A INPUT -p tcp --dport http-alt -j ACCEPT
+#iptables -A INPUT -p tcp --dport https -j ACCEPT
+#iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+#iptables -A INPUT -p tcp --dport 2020 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 2200 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 5000 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 1194 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 994 -j ACCEPT
 
 iptables -A INPUT -i tun+ -j ACCEPT
 iptables -A FORWARD -i tun+ -j ACCEPT
 
-iptables -A INPUT -i eth1 -j ACCEPT
-iptables -A FORWARD -i eth1 -j ACCEPT
+iptables -A INPUT -i eth0 -j ACCEPT
+iptables -A FORWARD -i eth0 -j ACCEPT
 
 iptables -A OUTPUT -m state --state NEW -o eth0 -j ACCEPT
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -137,7 +132,7 @@ iptables -A INPUT -p udp -m limit --limit 16/minute --limit-burst 32 -j REJECT
 iptables -A INPUT -p tcp -m connlimit --connlimit-above 16 --connlimit-mask 32 -j REJECT
 iptables -A INPUT -p udp -m connlimit --connlimit-above 16 --connlimit-mask 32 -j REJECT
 
-iptables -t mangle -A PREROUTING -p tcp -m conntrack --ctstate NEW -m tcpmss ! --mss 536:65535 -j DROP
+#iptables -t mangle -A PREROUTING -p tcp -m conntrack --ctstate NEW -m tcpmss ! --mss 536:65535 -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG NONE -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,SYN FIN,SYN -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
