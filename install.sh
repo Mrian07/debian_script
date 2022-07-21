@@ -151,6 +151,12 @@ wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/shadowsock
 wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/squid.sh \
 && chmod +x squid.sh && ./squid.sh
 
+wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/ohpserver.sh \
+&& chmod +x ohpserver.sh && ./ohpserver.sh
+
+wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/websocket.sh \
+&& chmod +x websocket.sh && ./websocket.sh
+
 wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/stunnel.sh \
 && chmod +x stunnel.sh && ./stunnel.sh
 
