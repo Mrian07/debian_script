@@ -27,14 +27,14 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
+apt-get -y install easy-rsa
+openssl rand -out /usr/share/easy-rsa/pki/.rnd -hex 256
 apt-get -y install openvpn
 systemctl stop openvpn
 systemctl disable openvpn
-
 apt-get -y install obfsproxy
 systemctl stop obfsproxy
 
-openssl rand -out /usr/share/easy-rsa/pki/.rnd -hex 256
 cd /usr/share/easy-rsa
 ./easyrsa --batch init-pki
 ./easyrsa --batch build-ca nopass
