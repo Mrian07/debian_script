@@ -24,6 +24,8 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
+DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
+
 apt-get -y install nginx
 systemctl stop nginx
 
@@ -79,8 +81,8 @@ http {
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
 
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
+    #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    #ssl_prefer_server_ciphers on;
 
     access_log /var/log/nginx/access.log;
     error_log /var/log/nginx/error.log;
@@ -102,28 +104,19 @@ mv -f /var/www/html/index.nginx-debian.html /var/www/html/index.html
 cat >/etc/nginx/sites-enabled/default <<-SECONF
 server {
     listen 8080 default_server;
-    listen [::]:8080 default_server;
+    #listen [::]:8080 default_server;
 
     root /var/www/html;
     index index.html;
-    server_name _;
+    server_name $DOMAIN www.$DOMAIN;
 
     location / {
-        try_files $uri $uri/ =404;
+        try_files \$uri \$uri/ =404;
     }
 
     location ~ /\.ht {
         deny all;
     }
-
-    #location ~ \.php$ {
-    #    include snippets/fastcgi-php.conf;
-    #
-    #    # With php-fpm (or other unix sockets):
-    #    fastcgi_pass unix:/run/php/php7.3-fpm.sock;
-    #    # With php-cgi (or other tcp sockets):
-    #    fastcgi_pass 127.0.0.1:9000;
-    #}
 }
 SECONF
 
