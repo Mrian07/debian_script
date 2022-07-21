@@ -29,14 +29,14 @@ unzip ohpserver-linux32.zip && rm ohpserver-linux32.zip
 chmod +x ohpserver
 mv ohpserver /usr/local/bin/
 
-cat >/etc/systemd/system/ohp-dropbear.service <<-EOF
+cat >/etc/systemd/system/ohpserver-dropbear.service <<-EOF
 [Unit]
 Description=OHP Server
 Wants=network.target
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/ohpserver -port 2024 -proxy 127.0.0.1:8000 -tunnel 127.0.0.1:338
+ExecStart=/usr/local/bin/ohpserver -port 2010 -proxy 127.0.0.1:8000 -tunnel 127.0.0.1:2200
 Restart=always
 RestartSec=5
 
@@ -44,14 +44,14 @@ RestartSec=5
 WantedBy=multi-user.target
 EOF
 
-cat >/etc/systemd/system/ohp-openvpn.service <<-EOF
+cat >/etc/systemd/system/ohpserver-openvpn.service <<-EOF
 [Unit]
 Description=OHP Server
 Wants=network.target
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/ohpserver -port 2025 -proxy 127.0.0.1:8000 -tunnel 127.0.0.1:1194
+ExecStart=/usr/local/bin/ohpserver -port 2011 -proxy 127.0.0.1:8000 -tunnel 127.0.0.1:1194
 Restart=always
 RestartSec=5
 
@@ -60,8 +60,8 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl enable ohp-dropbear
-systemctl enable ohp-openvpn
+systemctl enable ohpserver-dropbear
+systemctl enable ohpserver-openvpn
 
 rm -f ~/ohpserver.sh
 echo -e "${WHITE}=====================================================${CLR}"
