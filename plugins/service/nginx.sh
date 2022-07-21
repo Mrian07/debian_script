@@ -30,7 +30,7 @@ fi
 
 function install {
   while true; do
-    read -p "Teruskan dengan pemasangan semula? (Y/n) " getAnswer
+    read -r -p "Teruskan dengan pemasangan semula? (Y/n) " getAnswer
     case $getAnswer in
     [Yy])
       if [[ ! -f /etc/nginx/nginx.conf ]]; then
@@ -38,9 +38,11 @@ function install {
         && chmod +x nginx.sh && ./nginx.sh
       fi
       systemctl stop nginx
-      apt-get -y -qq --autoremove purge nginx
+      apt-get -y -qq --autoremove purge nginx && sleep 3
+      echo -en "${YELLOW}Pasang dan Konfigurasi pakej nginx... ${CLR}"
       wget -q https://raw.githubusercontent.com/cybertize/axis/dev/packages/nginx.sh \
       && chmod +x nginx.sh && ./nginx.sh
+      echo -e "${GREEN}[ DONE ]${CLR}" && exit 0
       ;;
     [Nn]) _menu && break ;;
     esac
@@ -49,12 +51,13 @@ function install {
 
 function uninstall {
   while true; do
-    read -p "Adakah anda pasti mahu menyahpasang nginx? (Y/n) " getAnswer
+    read -r -p "Adakah anda pasti mahu menyahpasang nginx? (Y/n) " getAnswer
     case $getAnswer in
     [Yy])
       systemctl stop nginx
-      apt-get -y -qq --autoremove purge nginx
-      echo "Bersihkan & Keluarkan pakej nginx" && exit 0
+      echo -en "${YELLOW}Nyahpasang dan Bersihkan pakej dropbear... ${CLR}"
+      apt-get -y -qq --auto-remove purge nginx
+      echo -e "${GREEN}[ DONE ]${CLR}" && exit 0
       ;;
     [Nn]) _menu && break ;;
     esac
@@ -64,45 +67,23 @@ function uninstall {
 function configure {
   getPort=($(netstat -tlpn | grep nginx | grep -w 'tcp' | awk '{print $4}' | cut -d ':' -f 2))
   clear && echo
-  echo "Secara lalai nginx mengunakan port ${getPort[1]} untuk sambungan HTTP"
+  echo "${MAGENTA}Secara lalai nginx mengunakan port${CLR} ${GREEN}$getPort${CLR} ${MAGENTA}untuk sambungan HTTP${CLR}"
   while true; do
-    read -p "Adakah anda mahu menukar port (Y/n)? " getAnswer
+    read -r -p "Adakah anda mahu menukar port (Y/n)? " getAnswer
     case $getAnswer in
     [Yy])
-      read -p "Masukkan port baru untuk HTTP: " readPortHTTP
-      if [[ ! -z $readPortHTTP && $readPortHTTP =~ ^[0-9]+$ ]]; then
-        checkPort=$(lsof -i:$readPortHTTP | wc -l)
+      read -r -p "Masukkan port baru untuk HTTP: " readPort
+      if [[ ! -z $readPort && $readPort =~ ^[0-9]+$ ]]; then
+        checkPort=$(lsof -i :$readPort | wc -l)
         if [[ $checkPort -ne 0 ]]; then
-          echo "Port sudah digunakan!" && break
+          echo -e "${RED}Port sudah digunakan!${CLR}"
+          read -r -p "Masukkan semula port baharu: " readPort
         fi
 
         systemctl stop nginx
-        sed -i "s|${getPort[1]}|${readPortHTTP}|g" /etc/nginx/sites-enabled/default
+        sed -i "s|$getPort|${readPort}|g" /etc/nginx/sites-enabled/default
         systemctl start nginx
-        echo "Perubahan telah dibuat" && break
-      fi
-      ;;
-    [Nn]) echo "Tiada perubahan dibuat" && break ;;
-    esac
-  done
-
-  clear && echo
-  echo "Secara lalai nginx mengunakan port ${getPort[0]} untuk sambungan HTTPS"
-  while true; do
-    read -p "Adakah anda mahu menukar port (Y/n)? " getAnswer
-    case $getAnswer in
-    [Yy])
-      read -p "Masukkan port baru untuk HTTPS: " readPortHTTPS
-      if [[ ! -z $readPortHTTPS && $readPortHTTPS =~ ^[0-9]+$ ]]; then
-        checkPort=$(lsof -i:$readPortHTTPS | wc -l)
-        if [[ $checkPort -ne 0 ]]; then
-          echo "Port sudah digunakan!" && break
-        fi
-
-        systemctl stop nginx
-        sed -i "s|${getPort[0]}|${readPortHTTPS}|g" /etc/nginx/sites-enabled/default
-        systemctl start nginx
-        echo "Perubahan telah dibuat" && break
+        echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
       fi
       ;;
     [Nn]) _menu && break ;;
