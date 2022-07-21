@@ -56,7 +56,7 @@ function uninstall {
       systemctl stop badvpn-udpgw
       systemctl disable badvpn-udpgw
       rm -f /usr/local/bin/badvpn-udpgw
-
+      rm -f /etc/systemd/system/badvpn-udpgw.service
       echo "Bersihkan & Keluarkan pakej badvpn" && exit 0
       ;;
     [Nn]) _menu && break ;;
