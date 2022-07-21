@@ -32,6 +32,7 @@ openssl rand -out /usr/share/easy-rsa/pki/.rnd -hex 256
 apt-get -y install openvpn
 systemctl stop openvpn
 systemctl disable openvpn
+
 apt-get -y install obfsproxy
 systemctl stop obfsproxy
 
@@ -51,7 +52,7 @@ ca /etc/openvpn/pki/ca.crt
 cert /etc/openvpn/pki/issued/server.crt
 key /etc/openvpn/pki/private/server.key
 dh /etc/openvpn/pki/dh.pem
-server 10.8.0.0 255.255.255.0
+server 10.20.0.0 255.255.255.0
 ifconfig-pool-persist ipp.txt
 push "redirect-gateway def1 bypass-dhcp"
 push "dhcp-option DNS 8.8.8.8"
@@ -84,7 +85,7 @@ comp-lzo
 remote $DOMAIN 1194
 http-proxy $DOMAIN 3128
 remote-cert-tls server
-cipher AES-128-GCM
+cipher AES-256-GCM
 auth-user-pass" >/etc/openvpn/client/client-tcp.ovpn
 
 echo "" >>/etc/openvpn/client/client-tcp.ovpn
@@ -101,7 +102,7 @@ ca /etc/openvpn/pki/ca.crt
 cert /etc/openvpn/pki/issued/server.crt
 key /etc/openvpn/pki/private/server.key
 dh /etc/openvpn/pki/dh.pem
-server 10.8.0.0 255.255.255.0
+server 10.20.0.0 255.255.255.0
 ifconfig-pool-persist ipp.txt
 push "redirect-gateway def1 bypass-dhcp"
 push "dhcp-option DNS 8.8.8.8"
@@ -155,7 +156,7 @@ ca /etc/openvpn/pki/ca.crt
 cert /etc/openvpn/pki/issued/server.crt
 key /etc/openvpn/pki/private/server.key
 dh /etc/openvpn/pki/dh.pem
-server 10.8.0.0 255.255.255.0
+server 10.20.0.0 255.255.255.0
 ifconfig-pool-persist ipp.txt
 route $IPADDR 255.255.255.255 net_gateway
 push "redirect-gateway def1 bypass-dhcp"
