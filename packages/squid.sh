@@ -62,6 +62,7 @@ http_access deny to_localhost
 
 http_access deny all
 http_port 3128
+http_port 8000
 
 coredump_dir /var/spool/squid
 refresh_pattern ^ftp: 1440 20% 10080
