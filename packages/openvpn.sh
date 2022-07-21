@@ -64,7 +64,7 @@ group nogroup
 persist-key
 persist-tun
 status /var/log/openvpn/status.log
-log /var/log/openvpn/openvpn.log
+log /var/log/openvpn/access.log
 verb 3
 mute 20
 verify-client-cert none
@@ -115,7 +115,7 @@ group nogroup
 persist-key
 persist-tun
 status /var/log/openvpn/status.log
-log /var/log/openvpn/openvpn.log
+log /var/log/openvpn/access.log
 verb 3
 mute 20
 verify-client-cert none
@@ -170,7 +170,7 @@ group nogroup
 persist-key
 persist-tun
 status /var/log/openvpn/status.log
-log /var/log/openvpn/openvpn.log
+log /var/log/openvpn/access.log
 verb 3
 mute 20
 tls-version-min 1.2
