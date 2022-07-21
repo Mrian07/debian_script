@@ -28,6 +28,7 @@ else
 fi
 
 apt-get -y install easy-rsa
+touch /usr/share/easy-rsa/pki/.rnd
 openssl rand -out /usr/share/easy-rsa/pki/.rnd -hex 256
 apt-get -y install openvpn
 systemctl stop openvpn
