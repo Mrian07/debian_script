@@ -77,30 +77,18 @@ apt-get -yqq install iptables-persistent
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
 
-iptables -A INPUT -s 127.0.0.1 -j ACCEPT
-iptables -A INPUT -d 127.0.0.1 -j ACCEPT
-
-iptables -A INPUT -i tun+ -j ACCEPT
-iptables -A FORWARD -i tun+ -j ACCEPT
-
-iptables -A INPUT -i eth0 -j ACCEPT
-iptables -A FORWARD -i eth0 -j ACCEPT
-
-#iptables -A INPUT -p tcp --dport http -j ACCEPT
-#iptables -A INPUT -p tcp --dport https -j ACCEPT
-
-iptables -A OUTPUT -m state --state NEW -o eth0 -j ACCEPT
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A FORWARD -m state --state NEW -o eth0 -j ACCEPT
-iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+iptables -A OUTPUT -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
+
+iptables -A FORWARD -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -t nat -A POSTROUTING -s 10.20.0.0/24 -o eth0 -j MASQUERADE
 
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A OUTPUT -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
-iptables -t nat -A POSTROUTING -s 10.20.0.0/24 -o eth0 -j MASQUERADE
-
 iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
-iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 iptables -A INPUT -p tcp -m limit --limit 16/minute --limit-burst 32 -j REJECT
 iptables -A INPUT -p udp -m limit --limit 16/minute --limit-burst 32 -j REJECT
 iptables -A INPUT -p tcp -m connlimit --connlimit-above 16 --connlimit-mask 32 -j REJECT
@@ -114,8 +102,8 @@ iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,ACK FIN -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,URG URG -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,FIN FIN -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,PSH PSH -j DROP
-# iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL ALL -j DROP
-# iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL NONE -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL ALL -j DROP
+iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL NONE -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL FIN,PSH,URG -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL SYN,FIN,PSH,URG -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
