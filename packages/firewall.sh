@@ -76,20 +76,9 @@ apt-get -yqq install iptables-persistent
 
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
-
-iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
-iptables -A OUTPUT -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
-
-iptables -A FORWARD -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -i tun0 -s 10.20.0.0/24 -j ACCEPT
 iptables -t nat -A POSTROUTING -s 10.20.0.0/24 -o eth0 -j MASQUERADE
+# iptables -t nat -A POSTROUTING -s 10.20.0.0/24 -d 0.0.0.0/0 -o eth0 -j MASQUERADE
 
-iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A OUTPUT -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-
-iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 iptables -A INPUT -p tcp -m limit --limit 16/minute --limit-burst 32 -j REJECT
 iptables -A INPUT -p udp -m limit --limit 16/minute --limit-burst 32 -j REJECT
 iptables -A INPUT -p tcp -m connlimit --connlimit-above 16 --connlimit-mask 32 -j REJECT
