@@ -49,86 +49,43 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 # DROPBEAR
 ##
 echo -en "[DROPBEAR] Downloading file create... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/create.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/create.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/create.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/create.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/create.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[DROPBEAR] Downloading file renew... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/renew.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/renew.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/renew.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[DROPBEAR] Downloading file login... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/login.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/login.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/login.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/login.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/login.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[DROPBEAR] Downloading file lists... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/lists.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lists.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/lists.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[DROPBEAR] Downloading file password... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/password.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/password.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/password.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/password.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/password.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[DROPBEAR] Downloading file lock... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/lock.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lock.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/lock.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[DROPBEAR] Downloading file unlock... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/unlock.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/unlock.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/unlock.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[DROPBEAR] Downloading file delete... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/dropbear/delete.sh'
+wget -q -O /usr/local/cybertize/plugins/dropbear/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/delete.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/delete.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-##
-# OPENVPN
-##
-echo -en "[OPENVPN] Downloading file create... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/create.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/create.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/create.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-echo -en "[OPENVPN] Downloading file renew... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/renew.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/renew.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-echo -en "[OPENVPN] Downloading file login... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/login.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/login.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/login.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-echo -en "[OPENVPN] Downloading file lists... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/lists.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/lists.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-echo -en "[OPENVPN] Downloading file password... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/password.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/password.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/password.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-echo -en "[OPENVPN] Downloading file lock... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/lock.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/lock.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-echo -en "[OPENVPN] Downloading file unlock... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/unlock.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/unlock.sh
-echo -e "${GREEN}[ DONE ]${CLR}"
-
-echo -en "[OPENVPN] Downloading file delete... "
-wget -q -O /usr/local/cybertize/plugins/openvpn/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/openvpn/delete.sh'
-chmod +x /usr/local/cybertize/plugins/openvpn/delete.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 ##
