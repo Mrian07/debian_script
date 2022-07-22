@@ -48,42 +48,42 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 ##
 # DROPBEAR
 ##
-echo -en "[DROPBEAR] Downloading file create... "
+echo -en "[ACCOUNT] Downloading file create... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/create.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/create.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/create.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
-echo -en "[DROPBEAR] Downloading file renew... "
+echo -en "[ACCOUNT] Downloading file renew... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/renew.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/renew.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
-echo -en "[DROPBEAR] Downloading file login... "
+echo -en "[ACCOUNT] Downloading file login... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/login.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/login.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/login.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
-echo -en "[DROPBEAR] Downloading file lists... "
+echo -en "[ACCOUNT] Downloading file lists... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lists.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/lists.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
-echo -en "[DROPBEAR] Downloading file password... "
+echo -en "[ACCOUNT] Downloading file password... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/password.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/password.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/password.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
-echo -en "[DROPBEAR] Downloading file lock... "
+echo -en "[ACCOUNT] Downloading file lock... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lock.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/lock.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
-echo -en "[DROPBEAR] Downloading file unlock... "
+echo -en "[ACCOUNT] Downloading file unlock... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/unlock.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/unlock.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
-echo -en "[DROPBEAR] Downloading file delete... "
+echo -en "[ACCOUNT] Downloading file delete... "
 wget -q -O /usr/local/cybertize/plugins/dropbear/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/delete.sh'
 chmod +x /usr/local/cybertize/plugins/dropbear/delete.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
