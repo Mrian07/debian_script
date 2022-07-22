@@ -34,6 +34,10 @@ apt-get -y -qq install lsof vnstat speedtest-cli
 timedatectl set-timezone Asia/Kuala_Lumpur
 ln -sf /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 
+echo "/bin/false
+/usr/bin/false
+/usr/sbin/nologin" >>/etc/shells
+
 echo "kernel.printk = 4 4 1 7 
 kernel.panic = 10 
 kernel.sysrq = 0 
