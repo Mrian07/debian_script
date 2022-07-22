@@ -31,15 +31,8 @@ apt-get -y -qq install build-essential
 apt-get -y -qq install zip curl git jq
 apt-get -y -qq install lsof vnstat speedtest-cli
 
-# echo "deb http://ftp.debian.org/debian buster-backports main
-# deb-src http://ftp.debian.org/debian buster-backports main" >> /etc/apt/sources.list
-
 timedatectl set-timezone Asia/Kuala_Lumpur
 ln -sf /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
-
-add-shell /bin/false
-add-shell /usr/bin/false
-add-shell /usr/sbin/nologin
 
 echo "kernel.printk = 4 4 1 7 
 kernel.panic = 10 
