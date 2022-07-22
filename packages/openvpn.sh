@@ -59,6 +59,7 @@ push "redirect-gateway def1 bypass-dhcp"
 push "dhcp-option DNS 8.8.8.8"
 push "dhcp-option DNS 8.8.4.4"
 cipher AES-256-GCM
+duplicate-cn
 comp-lzo
 user nobody
 group nogroup
@@ -110,6 +111,7 @@ push "dhcp-option DNS 8.8.8.8"
 push "dhcp-option DNS 8.8.4.4"
 route $IPADDR 255.255.255.255 net_gateway
 cipher AES-256-GCM
+duplicate-cn
 comp-lzo
 user nobody
 group nogroup
@@ -165,6 +167,7 @@ push "dhcp-option DNS 8.8.8.8"
 push "dhcp-option DNS 8.8.4.4"
 ;tls-crypt /etc/openvpn/pki/ta.key
 cipher AES-256-GCM
+duplicate-cn
 comp-lzo
 user nobody
 group nogroup
