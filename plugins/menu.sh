@@ -79,14 +79,14 @@ echo
 read -p "Masukkan pilihan anda: " getChoice
 case $getChoice in
   # dropbear & openvpn
-  01) bash /usr/local/cybertize/plugins/dropbear/create.sh ;;
-  02) bash /usr/local/cybertize/plugins/dropbear/renew.sh ;;
-  03) bash /usr/local/cybertize/plugins/dropbear/login.sh ;;
-  04) bash /usr/local/cybertize/plugins/dropbear/lists.sh ;;
-  05) bash /usr/local/cybertize/plugins/dropbear/password.sh ;;
-  06) bash /usr/local/cybertize/plugins/dropbear/lock.sh ;;
-  07) bash /usr/local/cybertize/plugins/dropbear/unlock.sh ;;
-  08) bash /usr/local/cybertize/plugins/dropbear/delete.sh ;;
+  01) bash /usr/local/cybertize/plugins/account/create.sh ;;
+  02) bash /usr/local/cybertize/plugins/account/renew.sh ;;
+  03) bash /usr/local/cybertize/plugins/account/login.sh ;;
+  04) bash /usr/local/cybertize/plugins/account/lists.sh ;;
+  05) bash /usr/local/cybertize/plugins/account/password.sh ;;
+  06) bash /usr/local/cybertize/plugins/account/lock.sh ;;
+  07) bash /usr/local/cybertize/plugins/account/unlock.sh ;;
+  08) bash /usr/local/cybertize/plugins/account/delete.sh ;;
 
   # shadowsocks
   09) bash /usr/local/cybertize/plugins/shadowsocks/create.sh ;;
