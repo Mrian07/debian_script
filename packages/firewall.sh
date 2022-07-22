@@ -83,6 +83,7 @@ iptables -A OUTPUT -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
 
 iptables -A FORWARD -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i tun0 -s 10.20.0.0/24 -j ACCEPT
 iptables -t nat -A POSTROUTING -s 10.20.0.0/24 -o eth0 -j MASQUERADE
 
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
