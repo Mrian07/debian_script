@@ -24,12 +24,10 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
-if [[ ! -d /usr/local/cybertize/plugins/dropbear ]]; then
-  mkdir -p /usr/local/cybertize/plugins/dropbear
+if [[ ! -d /usr/local/cybertize/plugins/account ]]; then
+  mkdir -p /usr/local/cybertize/plugins/account
 fi
-if [[ ! -d /usr/local/cybertize/plugins/openvpn ]]; then
-  mkdir -p /usr/local/cybertize/plugins/openvpn
-fi
+
 if [[ ! -d /usr/local/cybertize/plugins/shadowsocks ]]; then
   mkdir -p /usr/local/cybertize/plugins/shadowsocks
 fi
@@ -49,43 +47,43 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 # DROPBEAR
 ##
 echo -en "[ACCOUNT] Downloading file create... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/create.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/create.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/create.sh
+wget -q -O /usr/local/cybertize/plugins/account/create.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/create.sh'
+chmod +x /usr/local/cybertize/plugins/account/create.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[ACCOUNT] Downloading file renew... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/renew.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/renew.sh
+wget -q -O /usr/local/cybertize/plugins/account/renew.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/renew.sh'
+chmod +x /usr/local/cybertize/plugins/account/renew.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[ACCOUNT] Downloading file login... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/login.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/login.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/login.sh
+wget -q -O /usr/local/cybertize/plugins/account/login.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/login.sh'
+chmod +x /usr/local/cybertize/plugins/account/login.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[ACCOUNT] Downloading file lists... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lists.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/lists.sh
+wget -q -O /usr/local/cybertize/plugins/account/lists.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lists.sh'
+chmod +x /usr/local/cybertize/plugins/account/lists.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[ACCOUNT] Downloading file password... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/password.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/password.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/password.sh
+wget -q -O /usr/local/cybertize/plugins/account/password.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/password.sh'
+chmod +x /usr/local/cybertize/plugins/account/password.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[ACCOUNT] Downloading file lock... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lock.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/lock.sh
+wget -q -O /usr/local/cybertize/plugins/account/lock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/lock.sh'
+chmod +x /usr/local/cybertize/plugins/account/lock.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[ACCOUNT] Downloading file unlock... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/unlock.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/unlock.sh
+wget -q -O /usr/local/cybertize/plugins/account/unlock.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/unlock.sh'
+chmod +x /usr/local/cybertize/plugins/account/unlock.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 echo -en "[ACCOUNT] Downloading file delete... "
-wget -q -O /usr/local/cybertize/plugins/dropbear/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/delete.sh'
-chmod +x /usr/local/cybertize/plugins/dropbear/delete.sh
+wget -q -O /usr/local/cybertize/plugins/account/delete.sh 'https://raw.githubusercontent.com/cybertize/axis/dev/plugins/account/delete.sh'
+chmod +x /usr/local/cybertize/plugins/account/delete.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
 ##
