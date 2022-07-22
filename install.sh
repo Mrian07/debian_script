@@ -100,9 +100,9 @@ net.ipv4.conf.all.accept_source_route = 0
 net.ipv4.conf.all.rp_filter = 1
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv4.ip_forward = 1 
-net.core.default_qdisc = fq
 net.ipv4.tcp_fastopen = 3
 net.ipv4.tcp_mtu_probing = 1
+net.core.default_qdisc = fq_codel
 net.ipv4.tcp_congestion_control = bbr" > /etc/sysctl.conf
 sysctl -p &>/dev/null
 
