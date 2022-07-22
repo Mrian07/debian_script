@@ -29,7 +29,7 @@ apt-get -y -qq dist-upgrade
 apt-get -y -qq install gnupg1 automake cmake
 apt-get -y -qq install build-essential
 apt-get -y -qq install zip curl git jq
-apt-get -y -qq install vnstat speedtest-cli
+apt-get -y -qq install lsof vnstat speedtest-cli
 
 # echo "deb http://ftp.debian.org/debian buster-backports main
 # deb-src http://ftp.debian.org/debian buster-backports main" >> /etc/apt/sources.list
@@ -113,7 +113,6 @@ dd if=/dev/zero of=/swapfile bs=2048 count=1048576
 chmod 600 /swapfile
 mkswap /swapfile && swapon /swapfile
 echo "/swapfile swap swap defaults 0 0" >>/etc/fstab
-# swapon --show && free -h
 
 [[ ! -d /usr/local/cybertize ]] && mkdir -p /usr/local/cybertize
 
