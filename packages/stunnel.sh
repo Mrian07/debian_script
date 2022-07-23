@@ -56,7 +56,7 @@ connect = 127.0.0.1:2020
 
 [openvpn service]
 accept = 2001
-connect = 127.0.0.1:994
+connect = 127.0.0.1:5000
 EOF
 
 echo 'ENABLED=1
