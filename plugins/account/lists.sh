@@ -29,13 +29,12 @@ echo -e "${BLUE}░█▀▀█ ░█──░█ ░█▀▀█ ░█▀▀�
 echo -e "${BLUE}░█─── ░█▄▄▄█ ░█▀▀▄ ░█▀▀▀ ░█▄▄▀ ─░█── ░█─ ─▄▄▄▀▀ ░█▀▀▀${CLR}"
 echo -e "${BLUE}░█▄▄█ ──░█── ░█▄▄█ ░█▄▄▄ ░█─░█ ─░█── ▄█▄ ░█▄▄▄█ ░█▄▄▄${CLR}"
 echo
-getUsers=($(grep -sw 'account' /etc/passwd | cut -d : -f 1))
-getTotal=${#getUsers[@]}
-for user in ${getUsers[@]}; do
-  printf " %s\n" "$user"
-done
-echo "JUMLAH : $getTotal pengguna"
+for user in $(cat /etc/passwd | grep -sw 'client' |  cut -d ':' -f 1); do
+  echo " $user"
+  chage -l $user | grep "Account expires"
+done | paste -d " "  - - | sed 's/Account expires//g' | column -t
 echo
+
 echo -e "${WHITE}=====================================================${CLR}"
 echo -e "${WHITE}=======[${CLR} ${BLUE}SKRIP OLEH DOCTYPE, HAK CIPTA 2022.${CLR} ${WHITE}]=======${CLR}"
 echo -e "${WHITE}=====================================================${CLR}"
