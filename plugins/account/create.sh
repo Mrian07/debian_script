@@ -45,7 +45,7 @@ done
 expDate=$(date -d "$getDuration days" +"%F")
 
 useradd $getUser
-usermod -c "account" $getUser
+usermod -c "client" $getUser
 usermod -s /bin/false $getUser
 usermod -e $expDate $getUser
 echo -e "$getPass\n$getPass" | passwd $getUser &>/dev/null
