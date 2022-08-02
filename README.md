@@ -24,17 +24,21 @@ Packages/Services:-
 - dropbear
 - openvpn
 - shadowsocks-libev
+- trojan-gfw
+- v2ray
+- xray
+- wireguard
 - squid
-- haproxy
 - simple-obfs
 - obfsproxy
 - stunnel
-- badvpn
+- badvpn-udpgw
+- badvpn-tun2socks
 - fail2ban
-- ddos-deflate
 - anti-ddos
 - torrent-block
 - iptables
+- webmin
 ```
 
 ```bash
