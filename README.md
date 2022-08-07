@@ -24,7 +24,6 @@ Packages/Services:-
 - dropbear
 - openvpn
 - shadowsocks-libev
-- trojan-gfw
 - v2ray
 - xray
 - wireguard
@@ -35,7 +34,6 @@ Packages/Services:-
 - badvpn-udpgw
 - badvpn-tun2socks
 - fail2ban
-- anti-ddos
 - torrent-block
 - iptables
 - webmin
