@@ -40,6 +40,11 @@ apt-get -y install rng-tools
 echo "HRNGDEVICE=/dev/urandom" >>/etc/default/rng-tools
 systemctl restart rng-tools &>/dev/null
 
+apt-get install certbot -y
+apt-get install python3-certbot -y
+apt-get install python3-certbot-nginx -y
+# apt-get install python3-certbot-apache -y
+
 echo "/bin/false
 /usr/bin/false
 /usr/sbin/nologin" >>/etc/shells
@@ -88,9 +93,6 @@ echo "DOMAIN=\"${getDomain}\"" >>/usr/local/cybertize/environment
 echo "" >/etc/motd
 wget -q -O /etc/update-motd.d/10-uname 'https://raw.githubusercontent.com/cybertize/debian/buster/sources/banner'
 wget -q -O /etc/issue.net 'https://raw.githubusercontent.com/cybertize/debian/buster/sources/message'
-
-# apt-get -y install socat
-# curl -sL https://get.acme.sh | sh -s email=trojan@${getDomain}
 
 wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/nginx.sh \
 && chmod +x nginx.sh && ./nginx.sh
