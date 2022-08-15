@@ -53,10 +53,6 @@ connect = 127.0.0.1:1359
 [openvpn service]
 accept = 50389
 connect = 127.0.0.1:2751
-
-[shadowsocks service]
-accept = 52430
-connect = 127.0.0.1:3233
 EOF
 
 echo 'ENABLED=1
