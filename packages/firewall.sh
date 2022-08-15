@@ -73,7 +73,7 @@ iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL SYN,FIN,PSH,URG -j DROP
 iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
 
 iptables-save >/etc/iptables.up.rules
-cat >/etc/network/if-pre-up.d/iptables <<-'EOF'
+cat >/etc/network/if-pre-up.d/iptables <<-EOF
 #!/bin/bash
 iptables-restore -n </etc/iptables.up.rules
 EOF
