@@ -20,10 +20,73 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
+PASSWORD=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
+
 apt-get update
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install-geodata
 cp /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.old
+
+if [[ ! -f /usr/local/etc/xray/accounts ]]; then
+  touch /usr/local/etc/xray/accounts
+fi
+
+# [XRAY] Trojan TCP-XTLS
+cat >/usr/local/etc/xray/trojan-tcp-xtls.json <<-EOF
+{
+    "log": {
+        "loglevel": "debug"
+    },
+    "inbounds": [
+        {
+            "port": 443,
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password":"$PASSWORD",
+                        "flow": "xtls-rprx-direct"
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "dest": "/dev/shm/default.sock",
+                        "xver": 1
+                    },
+                    {
+                        "alpn": "h2",
+                        "dest": "/dev/shm/h2c.sock",
+                        "xver": 1
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "alpn": [
+                        "http/1.1",
+                        "h2"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/usr/local/etc/xray/fullchain.crt",
+                            "keyFile": "/usr/local/etc/xray/private.key"
+                            "ocspStapling": 3600
+                        }
+                    ],
+                    "minVersion": "1.2"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
+}
+EOF
 
 rm -f ~/xray.sh
 echo -e "${WHITE}=====================================================${CLR}"
