@@ -23,7 +23,7 @@ fi
 wget -q 'https://github.com/shadowsocks/badvpn/archive/refs/heads/master.zip'
 unzip master.zip && rm -f master.zip
 cd badvpn-master || exit
-cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1 -DBUILD_TUN2SOCKS=1
+cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
 make install
 cd && rm -r badvpn-master
 
