@@ -32,6 +32,9 @@ echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 
 
 apt-get update
 apt-get install nginx
+apt-get install certbot
+apt-get install python3-certbot
+apt-get install python3-certbot-nginx
 
 cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
