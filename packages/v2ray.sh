@@ -24,6 +24,9 @@ if [[ ! -d /usr/local/etc/v2ray/pki ]]; then
   mkdir /usr/local/etc/v2ray/pki
 fi
 
+PASSWORD=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
+DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
+
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)
 rm /usr/local/etc/v2ray/config.json
@@ -31,20 +34,12 @@ rm /usr/local/etc/v2ray/config.json
 chmod 644 /usr/local/etc/v2ray/fullchain.crt
 chmod 644 /usr/local/etc/v2ray/private.key
 
-if [[ ! -d /usr/local/etc/v2ray/clients/trojan ]]; then
-  mkdir -p /usr/local/etc/v2ray/clients/trojan
-fi
-
-if [[ ! -d /usr/local/etc/v2ray/clients/vless ]]; then
-  mkdir -p /usr/local/etc/v2ray/clients/vless
-fi
-
-if [[ ! -d /usr/local/etc/v2ray/clients/vmess ]]; then
-  mkdir -p /usr/local/etc/v2ray/clients/vmess
+if [[ ! -f /usr/local/etc/v2ray/accounts ]]; then
+  touch /usr/local/etc/v2ray/accounts
 fi
 
 # [V2RAY] Trojan
-cat >/usr/local/etc/v2ray/trojan-tcp-tls.json <<-'EOF'
+cat >/usr/local/etc/v2ray/trojan-tcp-tls.json <<-EOF
 {
     "log": {
         "loglevel": "warning"
@@ -56,8 +51,8 @@ cat >/usr/local/etc/v2ray/trojan-tcp-tls.json <<-'EOF'
             "settings": {
                 "clients": [
                     {
-                        "password":"123@ABC",
-                        "email": "love@v2fly.org"
+                        "password":"$PASSWORD",
+                        "email": "dev@$DOMAIN"
                     }
                 ]
             },
