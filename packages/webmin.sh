@@ -22,12 +22,11 @@ fi
 
 wget https://download.webmin.com/jcameron-key.asc
 apt-key add jcameron-key.asc
-# wget https://download.webmin.com/jcameron-key.asc
 # cat jcameron-key.asc | gpg --dearmor >/usr/share/keyrings/jcameron-key.gpg
 
-apt-get install apt-transport-https
+apt-get -y install apt-transport-https
 apt-get update
-apt-get install webmin
+apt-get -y install webmin
 
 rm -f ~/webmin.sh
 echo -e "${WHITE}=====================================================${CLR}"
