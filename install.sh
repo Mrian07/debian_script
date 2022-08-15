@@ -40,11 +40,6 @@ apt-get -y install rng-tools
 echo "HRNGDEVICE=/dev/urandom" >>/etc/default/rng-tools
 systemctl restart rng-tools &>/dev/null
 
-apt-get install certbot -y
-apt-get install python3-certbot -y
-apt-get install python3-certbot-nginx -y
-# apt-get install python3-certbot-apache -y
-
 echo "/bin/false
 /usr/bin/false
 /usr/sbin/nologin" >>/etc/shells
@@ -64,7 +59,7 @@ echo "/swapfile swap swap defaults 0 0" >>/etc/fstab
 echo "[Resolve]
 DNS=76.76.2.117 76.76.2.118
 FallbackDNS=dns.google
-Domains=cybertize.tk www.cybertize.tk
+#Domains=cybertize.tk www.cybertize.tk
 #LLMNR=yes
 #MulticastDNS=yes
 #DNSSEC=allow-downgrade
@@ -89,6 +84,20 @@ echo "LOCATION=${getLocation}" >> /usr/local/cybertize/environment
 
 read -r -p "Sila masukkan nama Domain: " getDomain
 echo "DOMAIN=\"${getDomain}\"" >>/usr/local/cybertize/environment
+
+read -r -p "Masukkan nama pengguna: " getUser
+echo "USERNAME=\"${getUser}\"" >>/usr/local/cybertize/environment
+
+read -r -p "Masukkan kata laluan: " getPass
+echo "PASSWORD=\"${getPass}\"" >>/usr/local/cybertize/environment
+
+expDate=$(date -d "365 days" +"%F")
+
+useradd "$getUser"
+usermod -c "admin" "$getUser"
+usermod -s /bin/false "$getUser"
+usermod -e "$expDate" "$getUser"
+echo -e "$getPass\n$getPass" | passwd "$getUser" &>/dev/null
 
 echo "" >/etc/motd
 wget -q -O /etc/update-motd.d/10-uname 'https://raw.githubusercontent.com/cybertize/debian/buster/sources/banner'
