@@ -20,6 +20,8 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
+PASSWORD=$(grep -sw 'PASSWORD' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
+
 apt-get -y install netcat netcat-openbsd
 apt-get -y install pwgen qrencode
 apt-get -y install shadowsocks-libev
@@ -31,7 +33,7 @@ cat >/etc/shadowsocks-libev/obfshttp.json <<-EOF
 {
     "server": "0.0.0.0",
     "port_password": {
-        "3011": "123@ABC"
+        "3011": "$PASSWORD"
     },
     "timeout": 300,
     "method": "aes-256-gcm",
@@ -61,7 +63,7 @@ cat >/etc/shadowsocks-libev/obfstls.json <<-EOF
 {
     "server": "0.0.0.0",
     "port_password": {
-        "3164": "123@ABC"
+        "3164": "$PASSWORD"
     },
     "timeout": 300,
     "method": "aes-256-gcm",
@@ -87,8 +89,8 @@ WantedBy=multi-user.target" >/etc/systemd/system/shadowsocks-obfstls.service
 systemctl daemon-reload
 systemctl enable shadowsocks-obfstls
 
-if [[ ! -f /etc/shadowsocks-libev/.accounts ]]; then
-  touch /etc/shadowsocks-libev/.accounts
+if [[ ! -f /etc/shadowsocks-libev/accounts ]]; then
+  touch /etc/shadowsocks-libev/accounts
 fi
 
 rm ~/shadowsocks.sh
