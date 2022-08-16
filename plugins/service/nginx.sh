@@ -101,7 +101,7 @@ function detail {
   echo -e "${YELLOW} Name   ${CLR}:${GREEN} $unitName${CLR}"
   echo -e "${YELLOW} Desc   ${CLR}:${GREEN} $unitDesc${CLR}"
   echo -e "${YELLOW} Status ${CLR}:${GREEN} $isActive & $isEnable${CLR}"
-  echo -e "${YELLOW} Ports  ${CLR}:${GREEN} ${getPorts[1]}(http) | ${getPorts[0]}(https)${CLR}"
+  echo -e "${YELLOW} Ports  ${CLR}:${GREEN} ${getPorts[0]}(http) | ${getPorts[1]}(https)${CLR}"
   echo
   echo -e "${WHITE}=====================================================${CLR}"
   echo -e "${WHITE}=======[${CLR} ${BLUE}SKRIP OLEH DOCTYPE, HAK CIPTA 2022.${CLR} ${WHITE}]=======${CLR}"
