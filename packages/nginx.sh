@@ -140,7 +140,7 @@ server {
 }
 EOFCONF
 
-wget -q -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/cybertize/debian/buster/sources/config/nginx/index.html"
+wget -q -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/cybertize/debian/buster/sources/configs/nginx/index.html"
 
 rm ~/nginx.sh
 echo -e "${WHITE}=====================================================${CLR}"
