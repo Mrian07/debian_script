@@ -25,7 +25,14 @@ PASSWORD=$(grep -sw 'PASSWORD' /usr/local/cybertize/environment | cut -d '=' -f 
 apt-get update
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install-geodata
-cp /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.old
+mv /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.old
+
+certbot certonly --register-unsafely-without-email --agree-tos --standalone -d www.cybertize.tk --cert-name xray
+cp /etc/letsencrypt/live/xray/fullchain.pem /usr/local/etc/xray/fullchain.crt
+cp /etc/letsencrypt/live/xray/privkey.pem /usr/local/etc/xray/private.key
+
+chmod 644 /usr/local/etc/xray/fullchain.crt
+chmod 644 /usr/local/etc/xray/private.key
 
 if [[ ! -f /usr/local/etc/xray/accounts ]]; then
   touch /usr/local/etc/xray/accounts
