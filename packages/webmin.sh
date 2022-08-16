@@ -20,12 +20,12 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
+apt-get -qq -y install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl
+
+echo "deb https://download.webmin.com/download/repository sarge contrib" >/etc/apt/sources.list.d/webmin.list
 wget https://download.webmin.com/jcameron-key.asc
 apt-key add jcameron-key.asc
-# cat jcameron-key.asc | gpg --dearmor >/usr/share/keyrings/jcameron-key.gpg
-
-apt-get update
-apt-get -y install webmin
+apt-get -qq update && apt-get -y install webmin
 
 rm -f ~/webmin.sh
 echo -e "${WHITE}=====================================================${CLR}"
