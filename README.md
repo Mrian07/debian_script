@@ -29,7 +29,6 @@ Packages/Services:-
 - wireguard
 - squid
 - simple-obfs
-- obfsproxy
 - stunnel
 - badvpn-udpgw
 - badvpn-tun2socks
