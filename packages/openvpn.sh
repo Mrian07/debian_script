@@ -25,13 +25,9 @@ DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | 
 
 apt-get -y install easy-rsa
 touch /usr/share/easy-rsa/pki/.rnd
-# openssl rand -out /usr/share/easy-rsa/pki/.rnd -hex 256
 apt-get -y install openvpn
 systemctl stop openvpn
 systemctl disable openvpn
-
-apt-get -y install obfsproxy
-systemctl stop obfsproxy
 
 cd /usr/share/easy-rsa || exit
 ./easyrsa --batch init-pki
@@ -88,10 +84,12 @@ remote-cert-tls server
 cipher AES-256-GCM
 auth-user-pass" >/etc/openvpn/client/openvpn-tcp.ovpn
 
-echo "" >>/etc/openvpn/client/openvpn-tcp.ovpn
-echo "<ca>" >>/etc/openvpn/client/openvpn-tcp.ovpn
-cat /etc/openvpn/pki/ca.crt >>/etc/openvpn/client/openvpn-tcp.ovpn
-echo "</ca>" >>/etc/openvpn/client/openvpn-tcp.ovpn
+{
+  echo ""
+  echo "<ca>"
+  cat /etc/openvpn/pki/ca.crt
+  echo "</ca>"
+} >>/etc/openvpn/client/openvpn-tcp.ovpn
 cp /etc/openvpn/client/openvpn-tcp.ovpn /var/www/html/openvpn-tcp.ovpn
 
 cat >/etc/openvpn/tls.conf <<-EOFTLS
@@ -142,10 +140,12 @@ remote-cert-tls server
 cipher AES-256-GCM
 auth-user-pass" >/etc/openvpn/client/openvpn-tls.ovpn
 
-echo "" >>/etc/openvpn/client/openvpn-tls.ovpn
-echo "<ca>" >>/etc/openvpn/client/openvpn-tls.ovpn
-cat /etc/openvpn/pki/ca.crt >>/etc/openvpn/client/openvpn-tls.ovpn
-echo "</ca>" >>/etc/openvpn/client/openvpn-tls.ovpn
+{
+  echo ""
+  echo "<ca>"
+  cat /etc/openvpn/pki/ca.crt
+  echo "</ca>"
+} >>/etc/openvpn/client/openvpn-tls.ovpn
 cp /etc/openvpn/client/openvpn-tls.ovpn /var/www/html/openvpn-tls.ovpn
 
 cat  >/etc/openvpn/ohp.conf <<-EOFOHP
@@ -195,10 +195,12 @@ remote-cert-tls server
 cipher AES-256-GCM
 auth-user-pass" >/etc/openvpn/client/openvpn-ohp.ovpn
 
-echo "" >>/etc/openvpn/client/openvpn-ohp.ovpn
-echo "<ca>" >>/etc/openvpn/client/openvpn-ohp.ovpn
-cat /etc/openvpn/pki/ca.crt >>/etc/openvpn/client/openvpn-ohp.ovpn
-echo "</ca>" >>/etc/openvpn/client/openvpn-ohp.ovpn
+{
+  echo ""
+  echo "<ca>"
+  cat /etc/openvpn/pki/ca.crt
+  echo "</ca>"
+} >>/etc/openvpn/client/openvpn-ohp.ovpn
 cp /etc/openvpn/client/openvpn-ohp.ovpn /var/www/html/openvpn-ohp.ovpn
 
 systemctl enable openvpn@tcp
