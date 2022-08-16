@@ -31,7 +31,6 @@ Packages/Services:-
 - simple-obfs
 - stunnel
 - badvpn-udpgw
-- badvpn-tun2socks
 - fail2ban
 - torrent-block
 - iptables
