@@ -69,6 +69,7 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 ##
 # SHADOWSOCKS
 ##
+echo
 echo -en "[SHADOWSOCKS] Downloading file create... "
 wget -q -O /usr/local/cybertize/plugins/libev-create.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/libev/create.sh'
 chmod +x /usr/local/cybertize/plugins/libev-create.sh
@@ -97,6 +98,7 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 ##
 # V2RAY
 ##
+echo
 echo -en "[V2RAY] Downloading file create... "
 wget -q -O /usr/local/cybertize/plugins/v2ray-create.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/v2ray/create.sh'
 chmod +x /usr/local/cybertize/plugins/v2ray-create.sh
@@ -125,6 +127,7 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 ##
 # XRAY
 ##
+echo
 echo -en "[XRAY] Downloading file create... "
 wget -q -O /usr/local/cybertize/plugins/xray-create.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/xray/create.sh'
 chmod +x /usr/local/cybertize/plugins/xray-create.sh
@@ -153,6 +156,7 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 ##
 # WIREGUARD
 ##
+echo
 echo -en "[WIREGUARD] Downloading file create... "
 wget -q -O /usr/local/cybertize/plugins/wireguard-create.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/wireguard/create.sh'
 chmod +x /usr/local/cybertize/plugins/wireguard-create.sh
@@ -181,6 +185,7 @@ echo -e "${GREEN}[ DONE ]${CLR}"
 ##
 # SERVICE
 ##
+echo
 echo -en "[SERVICE] Downloading file nginx... "
 wget -q -O /usr/local/cybertize/plugins/service-nginx.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/service/nginx.sh'
 chmod +x /usr/local/cybertize/plugins/service-nginx.sh
@@ -246,5 +251,35 @@ wget -q -O /usr/local/cybertize/plugins/service-badvpn.sh 'https://raw.githubuse
 chmod +x /usr/local/cybertize/plugins/service-badvpn.sh
 echo -e "${GREEN}[ DONE ]${CLR}"
 
+##
+# SERVER
+##
+echo
+echo -en "[SERVER] Downloading file details... "
+wget -q -O /usr/local/cybertize/plugins/detail.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/server/details.sh'
+chmod +x /usr/local/cybertize/plugins/detail.sh
+echo -e "${GREEN}[ DONE ]${CLR}"
+
+echo -en "[SERVER] Downloading file backup... "
+wget -q -O /usr/local/cybertize/plugins/backup.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/server/backup.sh'
+chmod +x /usr/local/cybertize/plugins/backup.sh
+echo -e "${GREEN}[ DONE ]${CLR}"
+
+echo -en "[SERVER] Downloading file restore... "
+wget -q -O /usr/local/cybertize/plugins/restore.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/server/restore.sh'
+chmod +x /usr/local/cybertize/plugins/restore.sh
+echo -e "${GREEN}[ DONE ]${CLR}"
+
+echo -en "[SERVER] Downloading file cloudflare... "
+wget -q -O /usr/local/cybertize/plugins/cloudflare.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/server/cloudflare.sh'
+chmod +x /usr/local/cybertize/plugins/cloudflare.sh
+echo -e "${GREEN}[ DONE ]${CLR}"
+
+echo -en "[SERVER] Downloading file digitalocean... "
+wget -q -O /usr/local/cybertize/plugins/digitalocean.sh 'https://raw.githubusercontent.com/cybertize/debian/buster/plugins/server/digitalocean.sh'
+chmod +x /usr/local/cybertize/plugins/digitalocean.sh
+echo -e "${GREEN}[ DONE ]${CLR}"
+
 # delete command.sh script
 rm ~/command.sh
+echo "" && sleep 3
