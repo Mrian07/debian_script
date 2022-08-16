@@ -36,6 +36,7 @@ apt-get -y install certbot
 apt-get -y install python3-certbot
 apt-get -y install python3-certbot-nginx
 
+systemctl stop nginx
 cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
 cat >/etc/nginx/nginx.conf <<-NGINXCONF
