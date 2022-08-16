@@ -93,10 +93,10 @@ if [[ ! -f /etc/shadowsocks-libev/accounts ]]; then
   touch /etc/shadowsocks-libev/accounts
 fi
 
-rm ~/shadowsocks.sh
+rm ~/libev.sh
 echo -e "${WHITE}=====================================================${CLR}"
 echo
-echo -e "${YELLOW}  Name${CLR}:${GREEN} shadowsocks.sh                                ${CLR}"
+echo -e "${YELLOW}  Name${CLR}:${GREEN} libev.sh                                      ${CLR}"
 echo -e "${YELLOW}  Desc${CLR}:${GREEN} Script to install shadowsocks automatic       ${CLR}"
 echo -e "${YELLOW}  Auth${CLR}:${GREEN} Doctype <cybertizedevel@gmail.com>            ${CLR}"
 echo
