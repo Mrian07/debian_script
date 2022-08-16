@@ -28,15 +28,6 @@ if [[ -f /etc/fail2ban/jail.conf ]]; then
   cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 fi
 
-echo -e "${WHITE}=====================================================${CLR}"
-echo
-echo -e "${YELLOW} Name${CLR}:${GREEN} fail2ban.sh                                   ${CLR}"
-echo -e "${YELLOW} Desc${CLR}:${GREEN} Script to install fail2ban automatic          ${CLR}"
-echo -e "${YELLOW} Auth${CLR}:${GREEN} Doctype <cybertizedevel@gmail.com>            ${CLR}"
-echo
-echo -e "${WHITE}=====================================================${CLR}"
-sleep 3
-
 ##
 # IPTABLES
 ##
