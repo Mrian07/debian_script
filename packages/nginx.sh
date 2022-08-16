@@ -110,7 +110,7 @@ NGINXCONF
 cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.old
 cat >/etc/nginx/conf.d/default.conf <<-EOFCONF
 server {
-    listen 80;
+    listen 8080;
     server_name $DOMAIN www.$DOMAIN;
 
     access_log /var/log/nginx/cybertize.tk.log  main;
