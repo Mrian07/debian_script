@@ -78,7 +78,7 @@ client
 dev tun
 proto tcp
 remote $DOMAIN 2279
-http-proxy $DOMAIN 8080
+http-proxy $DOMAIN 3128
 compress lz4-v2
 remote-cert-tls server
 cipher AES-256-GCM
@@ -90,7 +90,7 @@ auth-user-pass" >/etc/openvpn/client/openvpn-tcp.ovpn
   cat /etc/openvpn/pki/ca.crt
   echo "</ca>"
 } >>/etc/openvpn/client/openvpn-tcp.ovpn
-cp /etc/openvpn/client/openvpn-tcp.ovpn /var/www/html/openvpn-tcp.ovpn
+cp /etc/openvpn/client/openvpn-tcp.ovpn /usr/share/nginx/html/openvpn-tcp.ovpn
 
 cat >/etc/openvpn/tls.conf <<-EOFTLS
 port 2751
@@ -134,7 +134,7 @@ client
 dev tun
 proto tcp
 remote $DOMAIN 2751
-http-proxy $DOMAIN 8080
+http-proxy $DOMAIN 3128
 compress lz4-v2
 remote-cert-tls server
 cipher AES-256-GCM
@@ -146,7 +146,7 @@ auth-user-pass" >/etc/openvpn/client/openvpn-tls.ovpn
   cat /etc/openvpn/pki/ca.crt
   echo "</ca>"
 } >>/etc/openvpn/client/openvpn-tls.ovpn
-cp /etc/openvpn/client/openvpn-tls.ovpn /var/www/html/openvpn-tls.ovpn
+cp /etc/openvpn/client/openvpn-tls.ovpn /usr/share/nginx/html/openvpn-tls.ovpn
 
 cat  >/etc/openvpn/ohp.conf <<-EOFOHP
 port 2834
@@ -201,7 +201,7 @@ auth-user-pass" >/etc/openvpn/client/openvpn-ohp.ovpn
   cat /etc/openvpn/pki/ca.crt
   echo "</ca>"
 } >>/etc/openvpn/client/openvpn-ohp.ovpn
-cp /etc/openvpn/client/openvpn-ohp.ovpn /var/www/html/openvpn-ohp.ovpn
+cp /etc/openvpn/client/openvpn-ohp.ovpn /usr/share/nginx/html/openvpn-ohp.ovpn
 
 systemctl enable openvpn@tcp
 systemctl enable openvpn@tls
