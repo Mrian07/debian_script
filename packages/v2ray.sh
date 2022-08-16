@@ -24,12 +24,16 @@ if [[ ! -d /usr/local/etc/v2ray/pki ]]; then
   mkdir /usr/local/etc/v2ray/pki
 fi
 
-PASSWORD=$(grep -sw 'PASSWORD' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
+PASSWORD=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)
 rm /usr/local/etc/v2ray/config.json
+
+certbot certonly --register-unsafely-without-email --agree-tos --standalone -d www.cybertize.tk --cert-name v2ray
+cp /etc/letsencrypt/live/v2ray/fullchain.pem /usr/local/etc/v2ray/fullchain.crt
+cp /etc/letsencrypt/live/v2ray/privkey.pem /usr/local/etc/v2ray/private.key
 
 chmod 644 /usr/local/etc/v2ray/fullchain.crt
 chmod 644 /usr/local/etc/v2ray/private.key
@@ -38,7 +42,7 @@ if [[ ! -f /usr/local/etc/v2ray/accounts ]]; then
   touch /usr/local/etc/v2ray/accounts
 fi
 
-# [V2RAY] Trojan
+# [V2RAY] Trojan TCP-TLS
 cat >/usr/local/etc/v2ray/trojan-tcp-tls.json <<-EOF
 {
     "log": {
