@@ -20,7 +20,7 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
-PASSWORD=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
+PASSWORD=$(grep -sw 'PASSWORD' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 
 apt-get update
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
