@@ -32,6 +32,7 @@ apt-get -y -qq install software-properties-common
 apt-get -y -qq install apt-show-versions
 apt-get -y -qq install zip curl git jq lsof
 apt-get -y -qq install vnstat speedtest-cli
+apt-get -y install uuid-runtime
 
 echo "deb http://ftp.debian.org/debian buster-backports main
 deb-src http://ftp.debian.org/debian buster-backports main" >> /etc/apt/sources.list
