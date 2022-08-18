@@ -10,7 +10,7 @@ if [[ "$USER" != root ]]; then
   echo -e "${RED}Skrip perlu dijalankan dengan root!${CLR}" && exit 1
 fi
 
-getID=$(grep -s 'ID' /etc/os-release | cut -d '=' -f 2)
+getID=$(grep -ws 'ID' /etc/os-release | cut -d '=' -f 2)
 if [[ $getID == "debian" ]]; then
   getVersion=$(grep -s 'VERSION_ID' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
   if [[ $getVersion -ne 10 ]]; then
