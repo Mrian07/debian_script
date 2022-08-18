@@ -20,10 +20,10 @@ else
   echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
 fi
 
+DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 USER=$(grep -sw 'USERNAME' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 PASS=$(grep -sw 'PASSWORD' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 UUID=$(grep -sw 'UUID' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
-DOMAIN=$(grep -sw 'DOMAIN' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)
@@ -35,6 +35,10 @@ cp /etc/letsencrypt/live/v2ray/privkey.pem /usr/local/etc/v2ray/private.key
 
 chmod 644 /usr/local/etc/v2ray/fullchain.crt
 chmod 644 /usr/local/etc/v2ray/private.key
+
+if [[ ! -d /usr/local/etc/v2ray/clients ]]; then
+  mkdir /usr/local/etc/v2ray/clients
+fi
 
 if [[ ! -f /usr/local/etc/v2ray/accounts ]]; then
   touch /usr/local/etc/v2ray/accounts
@@ -415,55 +419,6 @@ cat >/usr/local/etc/v2ray/vmess-ws-tls.json <<-VMESS3
     ]
 }
 VMESS3
-
-# [VMESS] TCP-WS
-cat >/usr/local/etc/v2ray/vmess-tcp-ws.json <<-VMESS4
-{
-    "log": {
-        "loglevel": "warning"
-    },
-    "routing": {
-        "domainStrategy": "AsIs",
-        "rules": [
-            {
-                "type": "field",
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "block"
-            }
-        ]
-    },
-    "inbounds": [
-        {
-            "listen": "0.0.0.0",
-            "port": 6357,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$UUID"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "tag": "direct"
-        },
-        {
-            "protocol": "blackhole",
-            "tag": "block"
-        }
-    ]
-}
-VMESS4
 
 rm -f ~/v2ray.sh
 echo -e "${WHITE}=====================================================${CLR}"
