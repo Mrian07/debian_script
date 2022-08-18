@@ -23,18 +23,19 @@ Packages/Services:-
 - nginx
 - dropbear
 - openvpn
-- shadowsocks-libev
+- shadowsocks
 - v2ray
 - xray
 - wireguard
 - squid
-- simple-obfs
 - stunnel
 - badvpn-udpgw
+- simple-obfs
+- ohpserver
+- websocket
 - fail2ban
 - torrent-block
 - iptables
-- webmin
 ```
 
 ```bash
