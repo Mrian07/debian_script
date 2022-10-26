@@ -51,7 +51,7 @@ function detail {
     getServiceDesc=$(systemctl show badvpn-udpgw.service -p Description | cut -d '=' -f 2)
     isServiceActive=$(systemctl is-active badvpn-udpgw.service)
     isServiceEnable=$(systemctl is-enabled badvpn-udpgw.service)
-    getServicePort=$(ps aux | pgrep 'badvpn-udpgw' | awk '{print $13}' | head -n 1 | cut -d ':' -f 2)
+    getServicePort=$(ps aux | grep 'badvpn-udpgw' | awk '{print $13}' | head -n 1 | cut -d ':' -f 2)
 
     clear && echo
     echo -e "${WHITE}=====================================================${CLR}"
