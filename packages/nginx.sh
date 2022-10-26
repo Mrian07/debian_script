@@ -13,7 +13,7 @@ http://nginx.org/packages/debian $(lsb_release -cs) nginx" | tee /etc/apt/source
 echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" | tee /etc/apt/preferences.d/99nginx
 
 apt-get update
-apt-get install nginx
+apt-get install nginx -y
 apt-get install certbot
 apt-get install python3-certbot
 
