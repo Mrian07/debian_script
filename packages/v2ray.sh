@@ -11,16 +11,16 @@ bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)
 rm /usr/local/etc/v2ray/config.json
 
+if [[ ! -f /usr/local/etc/v2ray/accounts ]]; then
+    touch /usr/local/etc/v2ray/accounts
+fi
+
 certbot certonly --register-unsafely-without-email --agree-tos --standalone -d v2ray.cybertize.tk --cert-name v2ray
 cp /etc/letsencrypt/live/v2ray/fullchain.pem /usr/local/etc/v2ray/fullchain.crt
 cp /etc/letsencrypt/live/v2ray/privkey.pem /usr/local/etc/v2ray/private.key
 
 chmod 644 /usr/local/etc/v2ray/fullchain.crt
 chmod 644 /usr/local/etc/v2ray/private.key
-
-if [[ ! -f /usr/local/etc/v2ray/accounts ]]; then
-    touch /usr/local/etc/v2ray/accounts
-fi
 
 # [TROJAN] TCP-TLS
 cat >/usr/local/etc/v2ray/trojan-tcp-tls.json <<-TROJAN1
