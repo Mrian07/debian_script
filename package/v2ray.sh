@@ -12,9 +12,6 @@ USER=$(grep -sw 'USERNAME' /usr/local/cybertize/environment | cut -d '=' -f 2 | 
 PASS=$(grep -sw 'PASSWORD' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 UUID=$(grep -sw 'UUID' /usr/local/cybertize/environment | cut -d '=' -f 2 | tr -d '"')
 
-apt-get -y install certbot
-apt-get -y install python3-certbot
-
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)
 rm /usr/local/etc/v2ray/config.json
@@ -22,6 +19,9 @@ rm /usr/local/etc/v2ray/config.json
 if [[ ! -f /usr/local/etc/v2ray/accounts ]]; then
     touch /usr/local/etc/v2ray/accounts
 fi
+
+apt-get -y install certbot
+apt-get -y install python3-certbot
 
 certbot certonly --register-unsafely-without-email --agree-tos --standalone -d v2ray.cybertize.tk --cert-name v2ray
 cp /etc/letsencrypt/live/v2ray/fullchain.pem /usr/local/etc/v2ray/fullchain.crt
