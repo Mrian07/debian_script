@@ -198,15 +198,15 @@ function configure {
 }
 
 function detail {
-    getTrojanPort=$(grep -w 'port' /usr/local/etc/v2ray/trojan-tcp-tls.json | cut -d ' ' -f 2)
+    getTrojanTcpTls=$(grep -w 'port' /usr/local/etc/v2ray/trojan-tcp-tls.json | cut -d ' ' -f 2)
 
     getVlessGrpcTls=$(grep -w 'port' /usr/local/etc/v2ray/vless-grpc-tls.json | cut -d ' ' -f 2)
     getVlessTcpTls=$(grep -w 'port' /usr/local/etc/v2ray/vless-tcp-tls.json | cut -d ' ' -f 2)
     getVlessTcpWs=$(grep -w 'port' /usr/local/etc/v2ray/vless-tcp-ws.json | cut -d ' ' -f 2)
 
-    getPortVmess=$(grep -w 'port' /usr/local/etc/v2ray/vmess-http-tls.json | cut -d ' ' -f 2)
-    getPortVmess=$(grep -w 'port' /usr/local/etc/v2ray/vmess-tcp-tls.json | cut -d ' ' -f 2)
-    getPortVmess=$(grep -w 'port' /usr/local/etc/v2ray/vmess-ws-tls.json | cut -d ' ' -f 2)
+    getVmessHttpTls=$(grep -w 'port' /usr/local/etc/v2ray/vmess-http-tls.json | cut -d ' ' -f 2)
+    getVmessTcpTls=$(grep -w 'port' /usr/local/etc/v2ray/vmess-tcp-tls.json | cut -d ' ' -f 2)
+    getVmessWsTls=$(grep -w 'port' /usr/local/etc/v2ray/vmess-ws-tls.json | cut -d ' ' -f 2)
 
     clear && echo
     echo -e "${WHITE}=====================================================${CLR}"
@@ -219,16 +219,20 @@ function detail {
     echo -e "${YELLOW} Desc   ${CLR}:${GREEN} $getServiceDesc${CLR}"
 
     echo -e "${MAGENTA}TROJAN${CLR}"
-    echo -e "${YELLOW} Status ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
-    echo -e "${YELLOW} Ports ${CLR}:${GREEN} $getTrojanPort${CLR}"
+    echo -e "${YELLOW} TROJAN Status ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
+    echo -e "${YELLOW} TCP-TLS Port  ${CLR}:${GREEN} $getTrojanTcpTls${CLR}"
 
     echo -e "${MAGENTA}VLESS${CLR}"
-    echo -e "${YELLOW} Status ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
-    echo -e "${YELLOW} Ports  ${CLR}:${GREEN} $getVlessPort${CLR}"
+    echo -e "${YELLOW} VLESS Status  ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
+    echo -e "${YELLOW} GRPC-TLS Port ${CLR}:${GREEN} $getVlessGrpcTls${CLR}"
+    echo -e "${YELLOW} TCP-TLS Port  ${CLR}:${GREEN} $getVlessTcpTls${CLR}"
+    echo -e "${YELLOW} WS-TCP Port   ${CLR}:${GREEN} $getVlessTcpWs${CLR}"
 
     echo -e "${MAGENTA}VMESS${CLR}"
-    echo -e "${YELLOW} Status ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
-    echo -e "${YELLOW} Ports  ${CLR}:${GREEN} $getMessPort${CLR}"
+    echo -e "${YELLOW} VMESS Status  ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
+    echo -e "${YELLOW} HTTP-TLS Port ${CLR}:${GREEN} $getVmessHttpTls${CLR}"
+    echo -e "${YELLOW} TCP-TLS Port  ${CLR}:${GREEN} $getVmessTcpTls${CLR}"
+    echo -e "${YELLOW} WS-TLS Port   ${CLR}:${GREEN} $getVmessWsTls${CLR}"
     echo
     echo -e "${WHITE}=====================================================${CLR}"
     echo -e "${WHITE}=======[${CLR} ${BLUE}SKRIP OLEH DOCTYPE, HAK CIPTA 2022.${CLR} ${WHITE}]=======${CLR}"
