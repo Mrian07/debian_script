@@ -152,43 +152,43 @@ echo "" >/etc/motd
 wget -q -O /etc/update-motd.d/10-uname 'https://raw.githubusercontent.com/cybertize/debian/buster/sources/banner'
 wget -q -O /etc/issue.net 'https://raw.githubusercontent.com/cybertize/debian/buster/sources/message'
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/nginx.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/nginx.sh \
 && chmod +x nginx.sh && ./nginx.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/dropbear.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/dropbear.sh \
 && chmod +x dropbear.sh && ./dropbear.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/openvpn.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/openvpn.sh \
 && chmod +x openvpn.sh && ./openvpn.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/libev.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/libev.sh \
 && chmod +x libev.sh && ./libev.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/v2ray.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/v2ray.sh \
 && chmod +x v2ray.sh && ./v2ray.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/xray.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/xray.sh \
 && chmod +x xray.sh && ./xray.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/wireguard.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/wireguard.sh \
 && chmod +x wireguard.sh && ./wireguard.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/squid.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/squid.sh \
 && chmod +x squid.sh && ./squid.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/ohpserver.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/ohpserver.sh \
 && chmod +x ohpserver.sh && ./ohpserver.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/websocket.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/websocket.sh \
 && chmod +x websocket.sh && ./websocket.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/stunnel.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/stunnel.sh \
 && chmod +x stunnel.sh && ./stunnel.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/badvpn.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/badvpn.sh \
 && chmod +x badvpn.sh && ./badvpn.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/packages/firewall.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/firewall.sh \
 && chmod +x firewall.sh && ./firewall.sh
 
 wget -q https://raw.githubusercontent.com/cybertize/debian/buster/plugins/command.sh \
