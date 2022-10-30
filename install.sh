@@ -30,6 +30,8 @@ apt-get -y install gnupg1 automake cmake
 apt-get -y install software-properties-common
 apt-get -y install apt-show-versions
 apt-get -y install zip curl git jq lsof
+apt-get -y install certbot
+apt-get -y install python3-certbot
 apt-get -y install vnstat speedtest-cli
 apt-get -y install uuid-runtime
 apt-get -y install rng-tools
