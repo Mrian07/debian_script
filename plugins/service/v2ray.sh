@@ -11,21 +11,203 @@ CLR="\e[0m"
 
 [[ "$USER" != root ]] && exit 1
 
-getID=$(grep -ws 'ID' /etc/os-release | cut -d '=' -f 2)
-if [[ $getID == "debian" ]]; then
-    getVersion=$(grep -ws 'VERSION_ID' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
-    if [[ $getVersion -ne 10 ]]; then
-        echo -e "${RED}Versi Debian anda tidak disokong!${CLR}" && exit 1
-    fi
-else
-    echo -e "${RED}Skrip hanya untuk Linux Debian sahaja!${CLR}" && exit 1
-fi
-
 function configure {
+    # ################################ #
+    # TROJAN
+    # ################################ #
+    getPortTrojan=$(grep -w '"port":' /usr/local/etc/v2ray/trojan-tcp-tls.json | cut -d ' ' -f 2 | tr -d ',')
+    clear && echo
+    echo -e "${MAGENTA}Secara lalai v2ray menggunakan${CLR} ${GREEN}$getPortTrojan${CLR} ${MAGENTA}untuk sambungan trojan-tcp-tls${CLR}"
+    while true; do
+        read -r -p "Adakah anda mahu menukar port [Y/n]? " readAnswer
+        case $readAnswer in
+        [Yy])
+            read -r -p "Masukkan port baharu: " readPortTrojan
+            if [[ -n $readPortTrojan && $readPortTrojan =~ ^[0-9]+$ ]]; then
+                checkPort=$(lsof -i:"$readPortTrojan" | wc -l)
+                if [[ $checkPort -ne 0 ]]; then
+                    echo -e "${RED}Port sudah digunakan!${CLR}"
+                    read -r -p "Masukkan semula port baharu: " readPortTrojan
+                fi
 
+                systemctl stop v2ray@trojan-tcp-tls
+                sed -i "s|${getPortTrojan}|${readPortTrojan}|g" /etc/openvpn/default.conf
+                systemctl start v2ray@trojan-tcp-tls
+                echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
+            fi
+        ;;
+        [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
+        esac
+    done
+
+    # ################################ #
+    # VLESS
+    # ################################ #
+    vlessGrpcTls=$(grep -w '"port":' /usr/local/etc/v2ray/vless-grpc-tls.json | cut -d ' ' -f 2 | tr -d ',')
+    clear && echo
+    echo -e "${MAGENTA}Secara lalai v2ray menggunakan${CLR} ${GREEN}$vlessGrpcTls${CLR} ${MAGENTA}untuk sambungan vless-grpc-tls${CLR}"
+    while true; do
+        read -r -p "Adakah anda mahu menukar port [Y/n]? " readAnswer
+        case $readAnswer in
+        [Yy])
+            read -r -p "Masukkan port baharu: " readVlessGrpcTls
+            if [[ -n $readVlessGrpcTls && $readVlessGrpcTls =~ ^[0-9]+$ ]]; then
+                checkPort=$(lsof -i:"$readVlessGrpcTls" | wc -l)
+                if [[ $checkPort -ne 0 ]]; then
+                    echo -e "${RED}Port sudah digunakan!${CLR}"
+                    read -r -p "Masukkan semula port baharu: " readVlessGrpcTls
+                fi
+
+                systemctl stop v2ray@vless-grpc-tls
+                sed -i "s|${vlessGrpcTls}|${readVlessGrpcTls}|g" /usr/local/etc/v2ray/vless-grpc-tls.json
+                systemctl start v2ray@vless-grpc-tls
+                echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
+            fi
+        ;;
+        [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
+        esac
+    done
+
+    vlessTcpTls=$(grep -w '"port":' /usr/local/etc/v2ray/vless-tcp-tls.json | cut -d ' ' -f 2 | tr -d ',')
+    clear && echo
+    echo -e "${MAGENTA}Secara lalai v2ray menggunakan${CLR} ${GREEN}$vlessTcpTls${CLR} ${MAGENTA}untuk sambungan vless-tcp-tls${CLR}"
+    while true; do
+        read -r -p "Adakah anda mahu menukar port [Y/n]? " readAnswer
+        case $readAnswer in
+        [Yy])
+            read -r -p "Masukkan port baharu: " readVlessTcpTls
+            if [[ -n $readVlessTcpTls && $readVlessTcpTls =~ ^[0-9]+$ ]]; then
+                checkPort=$(lsof -i:"$readVlessTcpTls" | wc -l)
+                if [[ $checkPort -ne 0 ]]; then
+                    echo -e "${RED}Port sudah digunakan!${CLR}"
+                    read -r -p "Masukkan semula port baharu: " readVlessTcpTls
+                fi
+
+                systemctl stop v2ray@vless-tcp-tls
+                sed -i "s|${vlessTcpTls}|${readVlessTcpTls}|g" /usr/local/etc/v2ray/vless-tcp-tls.json
+                systemctl start v2ray@vless-tcp-tls
+                echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
+            fi
+        ;;
+        [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
+        esac
+    done
+
+    vlessTcpWs=$(grep -w '"port":' /usr/local/etc/v2ray/vless-tcp-ws.json | cut -d ' ' -f 2 | tr -d ',')
+    clear && echo
+    echo -e "${MAGENTA}Secara lalai v2ray menggunakan${CLR} ${GREEN}$vlessTcpWs${CLR} ${MAGENTA}untuk sambungan vless-tcp-ws${CLR}"
+    while true; do
+        read -r -p "Adakah anda mahu menukar port [Y/n]? " readAnswer
+        case $readAnswer in
+        [Yy])
+            read -r -p "Masukkan port baharu: " readVlessTcpWs
+            if [[ -n $readVlessTcpWs && $readVlessTcpWs =~ ^[0-9]+$ ]]; then
+                checkPort=$(lsof -i:"$readVlessTcpWs" | wc -l)
+                if [[ $checkPort -ne 0 ]]; then
+                    echo -e "${RED}Port sudah digunakan!${CLR}"
+                    read -r -p "Masukkan semula port baharu: " readVlessTcpWs
+                fi
+
+                systemctl stop v2ray@vless-tcp-ws
+                sed -i "s|${vlessTcpWs}|${readVlessTcpWs}|g" /usr/local/etc/v2ray/vless-tcp-ws.json
+                systemctl start v2ray@vless-tcp-ws
+                echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
+            fi
+        ;;
+        [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
+        esac
+    done
+
+    # ################################ #
+    # VMESS
+    # ################################ #
+    getPortVmess=$(grep -w '"port":' /usr/local/etc/v2ray/vmess-http-tls.json | cut -d ' ' -f 2 | tr -d ',')
+    clear && echo
+    echo -e "${MAGENTA}Secara lalai v2ray menggunakan${CLR} ${GREEN}$getPortTrojan${CLR} ${MAGENTA}untuk sambungan vmess-http-tls${CLR}"
+    while true; do
+        read -r -p "Adakah anda mahu menukar port [Y/n]? " readAnswer
+        case $readAnswer in
+        [Yy])
+            read -r -p "Masukkan port baharu: " readPortVmess
+            if [[ -n $readPortVmess && $readPortVmess =~ ^[0-9]+$ ]]; then
+                checkPort=$(lsof -i:"$readPortVmess" | wc -l)
+                if [[ $checkPort -ne 0 ]]; then
+                    echo -e "${RED}Port sudah digunakan!${CLR}"
+                    read -r -p "Masukkan semula port baharu: " readPortVmess
+                fi
+
+                systemctl stop v2ray@vmess-http-tls
+                sed -i "s|${getPortVmess}|${readPortVmess}|g" /etc/openvpn/default.conf
+                systemctl start v2ray@vmess-http-tls
+                echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
+            fi
+        ;;
+        [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
+        esac
+    done
+
+    getPortVmess=$(grep -w '"port":' /usr/local/etc/v2ray/vmess-tcp-tls.json | cut -d ' ' -f 2 | tr -d ',')
+    clear && echo
+    echo -e "${MAGENTA}Secara lalai v2ray menggunakan${CLR} ${GREEN}$getPortTrojan${CLR} ${MAGENTA}untuk sambungan vmess-tcp-tls${CLR}"
+    while true; do
+        read -r -p "Adakah anda mahu menukar port [Y/n]? " readAnswer
+        case $readAnswer in
+        [Yy])
+            read -r -p "Masukkan port baharu: " readPortVmess
+            if [[ -n $readPortVmess && $readPortVmess =~ ^[0-9]+$ ]]; then
+                checkPort=$(lsof -i:"$readPortVmess" | wc -l)
+                if [[ $checkPort -ne 0 ]]; then
+                    echo -e "${RED}Port sudah digunakan!${CLR}"
+                    read -r -p "Masukkan semula port baharu: " readPortVmess
+                fi
+
+                systemctl stop v2ray@vmess-tcp-tls
+                sed -i "s|${getPortVmess}|${readPortVmess}|g" /etc/openvpn/default.conf
+                systemctl start v2ray@vmess-tcp-tls
+                echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
+            fi
+        ;;
+        [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
+        esac
+    done
+
+    getPortVmess=$(grep -w '"port":' /usr/local/etc/v2ray/vmess-ws-tls.json | cut -d ' ' -f 2 | tr -d ',')
+    clear && echo
+    echo -e "${MAGENTA}Secara lalai v2ray menggunakan${CLR} ${GREEN}$getPortTrojan${CLR} ${MAGENTA}untuk sambungan vmess-ws-tls${CLR}"
+    while true; do
+        read -r -p "Adakah anda mahu menukar port [Y/n]? " readAnswer
+        case $readAnswer in
+        [Yy])
+            read -r -p "Masukkan port baharu: " readPortVmess
+            if [[ -n $readPortVmess && $readPortVmess =~ ^[0-9]+$ ]]; then
+                checkPort=$(lsof -i:"$readPortVmess" | wc -l)
+                if [[ $checkPort -ne 0 ]]; then
+                    echo -e "${RED}Port sudah digunakan!${CLR}"
+                    read -r -p "Masukkan semula port baharu: " readPortVmess
+                fi
+
+                systemctl stop v2ray@vmess-ws-tls
+                sed -i "s|${getPortVmess}|${readPortVmess}|g" /etc/openvpn/default.conf
+                systemctl start v2ray@vmess-ws-tls
+                echo -e "${GREEN}Perubahan telah dibuat${CLR}" && break
+            fi
+        ;;
+        [Nn]) echo -e "${YELLOW}Tiada perubahan dibuat${CLR}" && break ;;
+        esac
+    done
 }
 
 function detail {
+    getTrojanPort=$(grep -w 'port' /usr/local/etc/v2ray/trojan-tcp-tls.json | cut -d ' ' -f 2)
+
+    getVlessGrpcTls=$(grep -w 'port' /usr/local/etc/v2ray/vless-grpc-tls.json | cut -d ' ' -f 2)
+    getVlessTcpTls=$(grep -w 'port' /usr/local/etc/v2ray/vless-tcp-tls.json | cut -d ' ' -f 2)
+    getVlessTcpWs=$(grep -w 'port' /usr/local/etc/v2ray/vless-tcp-ws.json | cut -d ' ' -f 2)
+
+    getPortVmess=$(grep -w 'port' /usr/local/etc/v2ray/vmess-http-tls.json | cut -d ' ' -f 2)
+    getPortVmess=$(grep -w 'port' /usr/local/etc/v2ray/vmess-tcp-tls.json | cut -d ' ' -f 2)
+    getPortVmess=$(grep -w 'port' /usr/local/etc/v2ray/vmess-ws-tls.json | cut -d ' ' -f 2)
+
     clear && echo
     echo -e "${WHITE}=====================================================${CLR}"
     echo -e "${BLUE}░█▀▀█ ░█──░█ ░█▀▀█ ░█▀▀▀ ░█▀▀█ ▀▀█▀▀ ▀█▀ ░█▀▀▀█ ░█▀▀▀${CLR}"
@@ -35,8 +217,18 @@ function detail {
     echo
     echo -e "${YELLOW} Name   ${CLR}:${GREEN} $getServiceName${CLR}"
     echo -e "${YELLOW} Desc   ${CLR}:${GREEN} $getServiceDesc${CLR}"
+
+    echo -e "${MAGENTA}TROJAN${CLR}"
     echo -e "${YELLOW} Status ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
-    echo -e "${YELLOW} Ports  ${CLR}:${GREEN} $getServicePort${CLR}"
+    echo -e "${YELLOW} Ports ${CLR}:${GREEN} $getTrojanPort${CLR}"
+
+    echo -e "${MAGENTA}VLESS${CLR}"
+    echo -e "${YELLOW} Status ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
+    echo -e "${YELLOW} Ports  ${CLR}:${GREEN} $getVlessPort${CLR}"
+
+    echo -e "${MAGENTA}VMESS${CLR}"
+    echo -e "${YELLOW} Status ${CLR}:${GREEN} $isServiceActive & $isServiceEnable${CLR}"
+    echo -e "${YELLOW} Ports  ${CLR}:${GREEN} $getMessPort${CLR}"
     echo
     echo -e "${WHITE}=====================================================${CLR}"
     echo -e "${WHITE}=======[${CLR} ${BLUE}SKRIP OLEH DOCTYPE, HAK CIPTA 2022.${CLR} ${WHITE}]=======${CLR}"
