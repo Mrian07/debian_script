@@ -80,7 +80,7 @@ if [[ ! -f /etc/shadowsocks-libev/accounts ]]; then
     touch /etc/shadowsocks-libev/accounts
 fi
 
-rm ~/shadowsocks.sh
+rm ~/libev.sh
 echo "====================================================="
 echo " Name: shadowsocks.sh                                "
 echo " Desc: Script to install shadowsocks automatic       "
