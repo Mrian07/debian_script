@@ -20,8 +20,7 @@ if [[ ! -f /usr/local/etc/v2ray/accounts ]]; then
     touch /usr/local/etc/v2ray/accounts
 fi
 
-apt-get -y install certbot
-apt-get -y install python3-certbot
+apt-get -y install certbot python3-certbot
 
 certbot certonly --register-unsafely-without-email --agree-tos --standalone -d v2ray.cybertize.tk --cert-name v2ray
 cp /etc/letsencrypt/live/v2ray/fullchain.pem /usr/local/etc/v2ray/fullchain.crt
