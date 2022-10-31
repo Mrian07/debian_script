@@ -36,6 +36,7 @@ Packages/Services:-
 - fail2ban
 - torrent-block
 - iptables
+- webmin
 ```
 
 ```bash
