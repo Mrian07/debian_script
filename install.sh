@@ -192,6 +192,9 @@ wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/badvpn
 wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/firewall.sh \
 && chmod +x firewall.sh && ./firewall.sh
 
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/webmin.sh \
+&& chmod +x webmin.sh && ./webmin.sh
+
 wget -q https://raw.githubusercontent.com/cybertize/debian/buster/plugins/command.sh \
 && chmod +x command.sh && ./command.sh
 
