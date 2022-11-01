@@ -7,7 +7,7 @@ LISTENING_PORT = 2086
 PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
-DEFAULT_HOST = '127.0.0.1:1194'
+DEFAULT_HOST = '127.0.0.1:2279'
 RESPONSE = 'HTTP/1.1 Cybertize\r\nContent-length: 0\r\n\r\n'
 
 class Server(threading.Thread):
