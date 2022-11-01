@@ -405,6 +405,14 @@ cat >/usr/local/etc/v2ray/vmess-ws-tls.json <<-VMESS3
 }
 VMESS3
 
+systemctl enable v2ray@trojan-tcp-tls
+systemctl enable v2ray@vless-grpc-tls
+systemctl enable v2ray@vless-tcp-tls
+systemctl enable v2ray@vless-tcp-ws
+systemctl enable v2ray@vmess-http-tls
+systemctl enable v2ray@vmess-tcp-tls
+systemctl enable v2ray@vmess-ws-tls
+
 rm -f ~/v2ray.sh
 echo "====================================================="
 echo " Name: v2ray.sh                                      "
