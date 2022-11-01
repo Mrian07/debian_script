@@ -7,10 +7,10 @@ echo "====================================================="
 echo " Begin websocket package installation                "
 echo "====================================================="
 
-wget -q -O /usr/local/bin/ws-dropbear 'https://raw.githubusercontent.com/cybertize/axis/dev/sources/websocket/ws-dropbear.py'
-wget -q -O /usr/local/bin/ws-openvpn 'https://raw.githubusercontent.com/cybertize/buster/axis/sources/websocket/ws-openvpn.py'
-chmod +x /usr/local/bin/ws-dropbear
-chmod +x /usr/local/bin/ws-openvpn
+wget -q -O /usr/local/bin/websocket-dropbear 'https://raw.githubusercontent.com/cybertize/axis/dev/source/websocket/websocket-dropbear'
+wget -q -O /usr/local/bin/websocket-openvpn 'https://raw.githubusercontent.com/cybertize/buster/axis/source/websocket/websocket-openvpn'
+chmod +x /usr/local/bin/websocket-dropbear
+chmod +x /usr/local/bin/websocket-openvpn
 
 cat >/etc/systemd/system/websocket-dropbear.service <<-EOF
 [Unit]
@@ -24,7 +24,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear
+ExecStart=/usr/bin/python -O /usr/local/bin/websocket-dropbear
 Restart=on-failure
 
 [Install]
@@ -44,7 +44,7 @@ CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
 Restart=on-failure
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-openvpn
+ExecStart=/usr/bin/python -O /usr/local/bin/websocket-openvpn
 
 [Install]
 WantedBy=multi-user.target
