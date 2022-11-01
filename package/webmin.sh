@@ -19,6 +19,7 @@ systemctl stop webmin
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 sed -i 's/ipv6=1/ipv6=0/g' /etc/webmin/miniserv.conf
 
+rm -f ~/jcameron-key.asc
 rm -f ~/webmin.sh
 echo "====================================================="
 echo " Name: webmin.sh                                     "
