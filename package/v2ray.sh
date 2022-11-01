@@ -348,8 +348,8 @@ cat >/usr/local/etc/v2ray/vmess-tcp-tls.json <<-VMESS2
 }
 VMESS2
 
-# [VMESS] WS-TLS
-cat >/usr/local/etc/v2ray/vmess-ws-tls.json <<-VMESS3
+# [VMESS] TLS-WS
+cat >/usr/local/etc/v2ray/vmess-tls-ws.json <<-VMESS3
 {
     "log": {
         "loglevel": "warning"
@@ -411,7 +411,7 @@ systemctl enable v2ray@vless-tcp-tls
 systemctl enable v2ray@vless-tcp-ws
 systemctl enable v2ray@vmess-http-tls
 systemctl enable v2ray@vmess-tcp-tls
-systemctl enable v2ray@vmess-ws-tls
+systemctl enable v2ray@vmess-tls-ws
 
 rm -f ~/v2ray.sh
 echo "====================================================="
