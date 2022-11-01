@@ -21,8 +21,7 @@ else
 fi
 
 function configure {
-    # getPort=($(netstat -tlpn | grep nginx | grep -w 'tcp' | awk '{print $4}' | cut -d ':' -f 2))
-    mapfile -t getPort < <(netstat -tlpn | grep nginx | grep -w 'tcp' | awk '{print $4}' | cut -d ':' -f 2)
+    getPort=($(netstat -tlpn | grep nginx | grep -w 'tcp' | awk '{print $4}' | cut -d ':' -f 2))
     clear && echo
     echo "${MAGENTA}Secara lalai nginx mengunakan port${CLR} ${GREEN}${getPort[*]}${CLR} ${MAGENTA}untuk sambungan HTTP${CLR}"
     while true; do
