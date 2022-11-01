@@ -20,23 +20,23 @@ Kami tahu bahawa ISP anda telah menetapkan had data yang boleh anda gunakan, den
 
 ```
 Packages/Services:-
-- nginx
-- dropbear
-- openvpn
-- shadowsocks
-- v2ray
-- xray
-- wireguard
-- squid
-- stunnel
-- badvpn-udpgw
-- simple-obfs
-- ohpserver
-- websocket
-- fail2ban
-- torrent-block
-- iptables
-- webmin
+[O] nginx
+[O] dropbear
+[O] openvpn
+[O] shadowsocks
+[O] v2ray
+[X] xray
+[X] wireguard
+[O] squid
+[O] stunnel
+[O] badvpn-udpgw
+[O] simple-obfs
+[O] ohpserver
+[X] websocket
+[O] fail2ban
+[O] torrent-block
+[O] iptables
+[O] webmin
 ```
 
 ```bash
@@ -45,6 +45,6 @@ wget -q https://raw.githubusercontent.com/cybertize/debian/buster/install.sh && 
 
 <br>
 
-### By creating new account with this [referral link](https://m.do.co/c/6c18acb9480b) you will earn $100 credit into your digitalocean account that valid for 60 days.
+### By creating new account with this [referral link](https://m.do.co/c/6c18acb9480b) you will earn $200 credit into your digitalocean account that valid for 60 days.
 
 <br>
