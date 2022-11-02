@@ -32,7 +32,7 @@ Packages/Services:-
 [O] badvpn-udpgw
 [O] simple-obfs
 [O] ohpserver
-[X] websocket
+[O] websocket
 [O] fail2ban
 [O] torrent-block
 [O] iptables
