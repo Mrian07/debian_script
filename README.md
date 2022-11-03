@@ -1,21 +1,35 @@
 # Linux Debian-10.04 LTS (Buster)
 
-### **Performance & Speed**
+- [Linux Debian-10.04 LTS (Buster)](#linux-debian-1004-lts-buster)
+  - [**Features**](#features)
+      - [**Performance & Speed**](#performance--speed)
+      - [**No Restrictions**](#no-restrictions)
+      - [**Strong Encryption**](#strong-encryption)
+      - [**Unlimited Bandwidth**](#unlimited-bandwidth)
+      - [**100% Anonymity**](#100-anonymity)
+      - [**No Data Limitation**](#no-data-limitation)
+  - [**Howto**](#howto)
+  - [**Note**](#note)
+      - [By creating new account with this referral link you will earn $100 credit into your digitalocean account that valid for 60 days.](#by-creating-new-account-with-this-referral-link-you-will-earn-100-credit-into-your-digitalocean-account-that-valid-for-60-days)
+
+## **Features**
+
+#### **Performance & Speed**
 Pelayan VPN kami dibina untuk kelajuan. Anda akan segera menyedari bahawa pelayan VPN kami dioptimumkan untuk memaksimumkan kelajuan internet anda, sambil mengekalkan privasi anda.
 
-### **No Restrictions**
+#### **No Restrictions**
 Nyahsekat mana-mana tapak web atau perkhidmatan, kami tidak menyekat mana-mana port atau tapak web supaya anda boleh bermain apa-apa permainan atau menggunakan sebarang program.
 
-### **Strong Encryption**
+#### **Strong Encryption**
 Kami memahami betapa pentingnya untuk anda menjadi anonymous dan secure. Semua trafik antara anda dan VPN disulitkan menggunakan teknik penyulitan terbaik seperti AES-256 dan AES-128.
 
-### **Unlimited Bandwidth**
+#### **Unlimited Bandwidth**
 Nikmati kelajuan tanpa had dan trafik tanpa had, sama ada anda ingin menonton filem, memuat turun atau menjalankan sebarang aplikasi.
 
-### **100% Anonymity**
+#### **100% Anonymity**
 Dengan pelayan VPN yang kami sediakan, tidak ada sebarang trafik pelayaran internet anda akan tersimpan. Yang dilog adalah alamat IP anda dan masa sambungan dibuat.
 
-### **No Data Limitation**
+#### **No Data Limitation**
 Kami tahu bahawa ISP anda telah menetapkan had data yang boleh anda gunakan, dengan VPN kami terdapat kemungkinan untuk memintas had data tersebut dengan pengubahsuaian dengan sambungan anda.
 
 <br>
@@ -82,7 +96,7 @@ Plugins -> Menus -> Server:-
 ```
 <br>
 
-### **Howto**
+## **Howto**
 
 1. Make sure you already have domain, this is needed for package installation and configuration, if you do not have domain yet you can create domian for free from https://freenom.com and change the DNS Name with CloudFlare DNS.
 
@@ -109,4 +123,6 @@ Plugins -> Menus -> Server:-
 
 <br>
 
-### By creating new account with this [referral link](https://m.do.co/c/6c18acb9480b) you will earn $100 credit into your digitalocean account that valid for 60 days.
+## **Note**
+
+#### By creating new account with this [referral link](https://m.do.co/c/6c18acb9480b) you will earn $100 credit into your digitalocean account that valid for 60 days.
