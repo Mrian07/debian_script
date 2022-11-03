@@ -118,7 +118,7 @@ Create and Login to your CloudFlare account and add new site follow your domain 
 Make sure your SSL/TLS option on CloudFlare is **Full**\.
 
 #### **Third Step**
-Copy & paste code below to your terminal.
+Login to your VPS and copy & paste code below to your terminal.
 
 ```
 wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && chmod +x ~/install.sh && ~./install.sh
