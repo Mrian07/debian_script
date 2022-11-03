@@ -99,30 +99,30 @@ Plugins -> Menus -> Server:-
 ## **Howto**
 
 #### **First Step**
-1. Make sure you already have domain, this is needed for package installation and configuration, if you do not have domain yet you can create domian for free from https://freenom.com and change the DNS Name with CloudFlare DNS.
+Make sure you already have domain, this is needed for package installation and configuration, if you do not have domain yet you can create domian for free from https://freenom.com and change the DNS Name with CloudFlare DNS.
 
 #### **Second Step**
-2. Create and Login to your CloudFlare account and add new site follow your domain from Freenom and add DNS record. *Example:-*
+Create and Login to your CloudFlare account and add new site follow your domain from Freenom and add DNS record. *Example:-*
 
-    <br>
+<br>
 
-    | Type | Name | Content | Proxy Status | TTL | Action |
-    | ----- | ---- | ---- | ---- | ---- | ---- |
-    | A | cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
-    | A | www.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
-    | A | v2ray.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
-    | A | xray.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+| Type | Name | Content | Proxy Status | TTL | Action |
+| ----- | ---- | ---- | ---- | ---- | ---- |
+| A | cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+| A | www.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+| A | v2ray.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+| A | xray.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
 
-    <br>
+<br>
 
-    Make sure your SSL/TLS option on CloudFlare is **Full**\.
+Make sure your SSL/TLS option on CloudFlare is **Full**\.
 
 #### **Third Step**
-3. Copy & paste code below to your terminal.
+Copy & paste code below to your terminal.
 
-    ```
-    wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && chmod +x ~/install.sh && ~./install.sh
-    ```
+```
+wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && chmod +x ~/install.sh && ~./install.sh
+```
 
 <br>
 
