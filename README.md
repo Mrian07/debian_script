@@ -86,8 +86,6 @@ Plugins -> Menus -> Server:-
 
 ### **Howto**
 
-<br>
-
 1. Make sure you already have domain, this is needed for package installation and configuration, if you do not have domain yet you can create domian for free from https://freenom.com and change the DNS Name with CloudFlare DNS.
 
 2. Create and Login to your CloudFlare account and add new site follow your domain from Freenom and add DNS record. *Example:-*
