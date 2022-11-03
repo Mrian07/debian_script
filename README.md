@@ -1,4 +1,3 @@
-#!/bin/bash
 # Linux Debian-10.04 LTS (Buster)
 
 <br>
