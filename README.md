@@ -41,7 +41,7 @@ Package -> Services:-
 [ ✅ ] openvpn
 [ ✅ ] shadowsocks
 [ ✅ ] v2ray
-[ ✅ ] xray
+[ ❎ ] xray
 [ ❎ ] wireguard
 [ ✅ ] squid
 [ ✅ ] stunnel
