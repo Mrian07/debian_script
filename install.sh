@@ -195,7 +195,7 @@ wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/firewa
 wget -q https://raw.githubusercontent.com/cybertize/debian/buster/package/webmin.sh \
 && chmod +x webmin.sh && ./webmin.sh
 
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/plugins/command.sh \
+wget -q https://raw.githubusercontent.com/cybertize/debian/buster/plugin/command.sh \
 && chmod +x command.sh && ./command.sh
 
 rm ~/install.sh
