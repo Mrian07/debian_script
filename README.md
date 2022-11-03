@@ -1,7 +1,5 @@
 # Linux Debian-10.04 LTS (Buster)
 
-<br>
-
 ### **Performance & Speed**
 Pelayan VPN kami dibina untuk kelajuan. Anda akan segera menyedari bahawa pelayan VPN kami dioptimumkan untuk memaksimumkan kelajuan internet anda, sambil mengekalkan privasi anda.
 
