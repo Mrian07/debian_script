@@ -20,6 +20,8 @@ Dengan pelayan VPN yang kami sediakan, tidak ada sebarang trafik pelayaran inter
 ### **No Data Limitation**
 Kami tahu bahawa ISP anda telah menetapkan had data yang boleh anda gunakan, dengan VPN kami terdapat kemungkinan untuk memintas had data tersebut dengan pengubahsuaian dengan sambungan anda.
 
+<br>
+
 ```
 Package -> Services:-
 [ ✅ ] nginx
@@ -80,10 +82,34 @@ Plugins -> Menus -> Server:-
 [ ❎ ] CloudFlare
 [ ❎ ] DigitalOcean
 ```
+<br>
 
-```
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/install.sh && chmod +x ~/install.sh && ./install.sh
-```
+### **Howto**
+
+<br>
+
+1. Make sure you already have domain, this is needed for package installation and configuration, if you do not have domain yet you can create domian for free from https://freenom.com and change the DNS Name with CloudFlare DNS.
+
+2. Create and Login to your CloudFlare account and add new site follow your domain from Freenom and add DNS record. *Example:-*
+
+    <br>
+
+    | Type | Name | Content | Proxy Status | TTL | Action |
+    | ----- | ---- | ---- | ---- | ---- | ---- |
+    | A | cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+    | A | www.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+    | A | v2ray.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+    | A | xray.cybertize.tk | 157.245.61.222 | DNS only | Auto | Edit |
+
+    <br>
+
+    Make sure your SSL/TLS option on CloudFlare is **Full**\.
+
+3. Copy & paste code below to your terminal.
+
+    ```
+    wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && chmod +x ~/install.sh && ~./install.sh
+    ```
 
 <br>
 
