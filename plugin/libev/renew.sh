@@ -23,7 +23,7 @@ until [[ -n $getDuration && $getDuration =~ ^[0-9]+$ ]]; do
     read -r -p "Masukkan Tempoh aktif (Hari): " getDuration
 done
 oldExpDate=$(grep -sw "$getUser" /etc/shadowsocks-libev/accounts | awk '{print $6}')
-newExpDate=$(( oldExpDate + getDuration ))
+newExpDate=$(date -d "$getDuration days" +"%F")
 
 sed -i "s/$oldExpDate/$newExpDate/" /etc/shadowsocks-libev/accounts
 
