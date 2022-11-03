@@ -1,4 +1,7 @@
+#!/bin/bash
 # Linux Debian-10.04 LTS (Buster)
+
+<br>
 
 ### **Performance & Speed**
 Pelayan VPN kami dibina untuk kelajuan. Anda akan segera menyedari bahawa pelayan VPN kami dioptimumkan untuk memaksimumkan kelajuan internet anda, sambil mengekalkan privasi anda.
@@ -7,7 +10,7 @@ Pelayan VPN kami dibina untuk kelajuan. Anda akan segera menyedari bahawa pelaya
 Nyahsekat mana-mana tapak web atau perkhidmatan, kami tidak menyekat mana-mana port atau tapak web supaya anda boleh bermain apa-apa permainan atau menggunakan sebarang program.
 
 ### **Strong Encryption**
-Kami tahu pentingnya untuk anda menjadi anonymous dan secure. Semua trafik antara anda dan VPN disulitkan menggunakan teknik penyulitan terbaik seperti AES-256 dan AES-128.
+Kami memahami betapa pentingnya untuk anda menjadi anonymous dan secure. Semua trafik antara anda dan VPN disulitkan menggunakan teknik penyulitan terbaik seperti AES-256 dan AES-128.
 
 ### **Unlimited Bandwidth**
 Nikmati kelajuan tanpa had dan trafik tanpa had, sama ada anda ingin menonton filem, memuat turun atau menjalankan sebarang aplikasi.
@@ -19,32 +22,70 @@ Dengan pelayan VPN yang kami sediakan, tidak ada sebarang trafik pelayaran inter
 Kami tahu bahawa ISP anda telah menetapkan had data yang boleh anda gunakan, dengan VPN kami terdapat kemungkinan untuk memintas had data tersebut dengan pengubahsuaian dengan sambungan anda.
 
 ```
-Packages/Services:-
-[O] nginx
-[O] dropbear
-[O] openvpn
-[O] shadowsocks
-[O] v2ray
-[X] xray
-[X] wireguard
-[O] squid
-[O] stunnel
-[O] badvpn-udpgw
-[O] simple-obfs
-[O] ohpserver
-[O] websocket
-[O] fail2ban
-[O] torrent-block
-[O] iptables
-[O] webmin
+Package -> Services:-
+[ ✅ ] nginx
+[ ✅ ] dropbear
+[ ✅ ] openvpn
+[ ✅ ] shadowsocks
+[ ✅ ] v2ray
+[ ✅ ] xray
+[ ❎ ] wireguard
+[ ✅ ] squid
+[ ✅ ] stunnel
+[ ✅ ] badvpn
+[ ✅ ] simple-obfs
+[ ✅ ] ohpserver
+[ ✅ ] websocket
+[ ✅ ] fail2ban
+[ ✅ ] torrent-block
+[ ✅ ] iptables
 ```
 
-```bash
-wget -q https://raw.githubusercontent.com/cybertize/debian/buster/install.sh && chmod u+x install.sh && ./install.sh
+```
+Plugins -> Menus -> Accounts:-
+[ ✅ ] dropbear
+[ ✅ ] openvpn
+[ ❎ ] shadowsocks
+[ ❎ ] v2ray
+[ ❎ ] xray
+[ ❎ ] wireguard
+```
+
+```
+Plugins -> Menus -> Services:-
+[ ❎ ] nginx
+[ ❎ ] dropbear
+[ ❎ ] openvpn
+[ ❎ ] shadowsocks
+[ ❎ ] v2ray
+[ ❎ ] xray
+[ ❎ ] wireguard
+[ ❎ ] squid
+[ ❎ ] stunnel
+[ ❎ ] badvpn-udpgw
+[ ❎ ] simple-obfs
+[ ❎ ] ohpserver
+[ ❎ ] websocket
+[ ❎ ] fail2ban
+[ ❎ ] torrent-block
+[ ❎ ] iptables
+```
+
+```
+Plugins -> Menus -> Server:-
+[ ❎ ] Backup
+[ ❎ ] Restore
+[ ❎ ] Details
+[ ❎ ] Howto
+[ ❎ ] Readme
+[ ❎ ] CloudFlare
+[ ❎ ] DigitalOcean
+```
+
+```
+wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && bash install.sh
 ```
 
 <br>
 
-### By creating new account with this [referral link](https://m.do.co/c/6c18acb9480b) you will earn $200 credit into your digitalocean account that valid for 60 days.
-
-<br>
+### By creating new account with this [referral link](https://m.do.co/c/6c18acb9480b) you will earn $100 credit into your digitalocean account that valid for 60 days.
