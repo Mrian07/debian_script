@@ -83,7 +83,7 @@ Plugins -> Menus -> Server:-
 ```
 
 ```
-wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && bash install.sh
+wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && chmod +x ~/install.sh && ./install.sh
 ```
 
 <br>
