@@ -9,21 +9,20 @@ CLR="\e[0m"
 
 [[ "$USER" != root ]] && exit 1
 
-if [[ ! -f /etc/shadowsocks-libev/accounts ]]; then
-    until [[ -n $getUser && $getUser =~ ^[a-zA-Z0-9_]+$ ]]; do
-        read -r -p "Masukkan nama pengguna: " getUser
-        if ! grep -sw "$getUser" /etc/shadowsocks-libev/accounts; then
-            echo -e "${RED}Nama pengguna tidak wujud!${CLR}"
-            read -r -p "Sila masukkan semula nama pengguna: " getUser
-        fi
-    done
-fi
+until [[ -n $getUser && $getUser =~ ^[a-zA-Z0-9_]+$ ]]; do
+    read -r -p "Masukkan nama pengguna: " getUser
+    if ! grep -sw "$getUser" /etc/shadowsocks-libev/accounts; then
+        echo -e "${RED}Nama pengguna tidak wujud!${CLR}"
+        read -r -p "Sila masukkan semula nama pengguna: " getUser
+    fi
+done
 
 until [[ -n $getDuration && $getDuration =~ ^[0-9]+$ ]]; do
     read -r -p "Masukkan Tempoh aktif (Hari): " getDuration
 done
+
+oldExpDate=$(grep -sw $getUser /etc/shadowsocks-libev/accounts | awk '{print $6}')
 newExpDate=$(date -d "$getDuration days" +"%F")
-oldExpDate=$(grep -sw "$getUser" /etc/shadowsocks-libev/accounts | awk '{print $6}')
 sed -i "s/$oldExpDate/$newExpDate/" /etc/shadowsocks-libev/accounts
 
 clear && echo
