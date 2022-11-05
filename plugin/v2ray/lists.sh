@@ -17,9 +17,9 @@ echo -e "${BLUE}░█▄▄█ ──░█── ░█▄▄█ ░█▄▄�
 echo -e "${WHITE}=====================================================${CLR}"
 echo
 
-while read -r expired; do
-	getUser=$(echo "$expired" | awk '{print $1}')
-	getExpDate=$(echo "$expired" | awk '{print $3}')
+while read -r list; do
+	getUser=$(echo "$list" | awk '{print $1}')
+	getExpDate=$(echo "$list" | awk '{print $3}')
 	printf "%-17s %2s\n" "$getUser" "$getExpDate"
 done </usr/local/etc/v2ray/accounts
 total=$(wc -l /usr/local/etc/v2ray/accounts | awk '{print $1}')
