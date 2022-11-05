@@ -41,9 +41,9 @@ if [[ -z $getObfs ]]; then
     getObfs="http"
 fi
 
-ss_link=$(ss://aes-256-gcm:${getPass}@${DOMAIN}:${newPort}/?plugin=obfs-local;obfs=${getObfs};obfs-host=${DOMAIN} | base64)
-ss_base64=$ss_link#$getUser
-echo "$IPADDR $newPort $getObfs $getUser $expDate $getPass" >>/etc/shadowsocks-libev/accounts
+ss_uri=$(ss://aes-256-gcm:${getPass}@${DOMAIN}:${newPort}/?plugin=obfs-local;obfs=${getObfs};obfs-host=${DOMAIN})
+user_info=$ss_uri#$getUser
+echo "$IPADDR $newPort $getObfs $getUser $getPass $expDate" >>/etc/shadowsocks-libev/accounts
 
 clear && echo
 echo -e "${WHITE}=====================================================${CLR}"
@@ -52,18 +52,16 @@ echo -e "${BLUE}░█─── ░█▄▄▄█ ░█▀▀▄ ░█▀▀�
 echo -e "${BLUE}░█▄▄█ ──░█── ░█▄▄█ ░█▄▄▄ ░█─░█ ─░█── ▄█▄ ░█▄▄▄█ ░█▄▄▄${CLR}"
 echo -e "${WHITE}=====================================================${CLR}"
 echo
-echo -e "${YELLOW}     Alamat IP${CLR}:${GREEN} $IPADDR${CLR}"
-echo -e "${YELLOW} Nama hostname${CLR}:${GREEN} $DOMAIN${CLR}"
+echo -e "${YELLOW}     IP/Domain${CLR}:${GREEN} $IPADDR / $DOMAIN${CLR}"
 echo -e "${YELLOW}          port${CLR}:${GREEN} $newPort${CLR}"
-echo -e "${YELLOW}   Kata laluan${CLR}:${GREEN} $getPass${CLR}"
 echo -e "${YELLOW}       Encrypt${CLR}:${GREEN} aes-256-gcm${CLR}"
 echo -e "${YELLOW}        Plugin${CLR}:${GREEN} simple-obfs${CLR}"
 echo -e "${YELLOW}          Obfs${CLR}:${GREEN} $getObfs${CLR}"
-echo -e "${YELLOW}      Hostname${CLR}:${GREEN} ${DOMAIN}${CLR}"
 echo -e "${YELLOW} Nama pengguna${CLR}:${GREEN} $getUser${CLR}"
+echo -e "${YELLOW}   Kata laluan${CLR}:${GREEN} $getPass${CLR}"
 echo -e "${YELLOW}  Tarikh luput${CLR}:${GREEN} $expDate${CLR}"
 echo
-echo "$ss_base64"
+echo "$user_info"
 echo
 echo -e "${WHITE}=====================================================${CLR}"
 echo -e "${WHITE}=======[${CLR} ${BLUE}SKRIP OLEH DOCTYPE, HAK CIPTA 2022.${CLR} ${WHITE}]=======${CLR}"
