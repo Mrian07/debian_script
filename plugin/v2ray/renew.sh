@@ -17,31 +17,21 @@ echo -e "${BLUE}░█▄▄█ ──░█── ░█▄▄█ ░█▄▄�
 echo -e "${WHITE}=====================================================${CLR}"
 echo
 
-read -r -p "Username : " getUser
-if ! grep -qw "$getUser" /donb/v2ray/v2ray-clients.txt; then
-	echo -e ""
-	echo -e "User '$getUser' does not exist."
-	echo -e ""
-	exit 0
-fi
-read -r -p "Duration (day) : " getDuration
+until [[ -n $getUser && $getUser =~ ^[a-zA-Z0-9_]+$ ]]; do
+    read -r -p "Masukkan nama pengguna: " getUser
+    if grep -sw "$getUser" /usr/local/etc/v2ray/accounts &>/dev/null; then
+        echo -e "${RED}Nama pengguna sudah wujud!${CLR}"
+        read -r -p "Sila masukkan semula nama pengguna: " getUser
+    fi
+done
 
-uuid=$(grep -w "$getUser" /donb/v2ray/v2ray-clients.txt | awk '{print $2}')
-exp_old=$(grep -w "$getUser" /donb/v2ray/v2ray-clients.txt | awk '{print $3}')
-diff=$((($(date -d "${exp_old}" +%s) - $(date +%s)) / (86400)))
-duration=$((diff + getDuration + 1))
-exp_new=$(date -d +"${duration}"days +%Y-%m-%d)
-exp=$(date -d "${exp_new}" +"%d %b %Y")
+until [[ -n $getDuration && $getDuration =~ ^[0-9]+$ ]]; do
+    read -r -p "Masukkan Tempoh aktif (Hari): " getDuration
+done
 
-sed -i "/\b$getUser\b/d" /donb/v2ray/v2ray-clients.txt
-echo -e "$getUser\t$uuid\t$exp_new" >>/donb/v2ray/v2ray-clients.txt
-
-clear
-echo -e "V2Ray User Information"
-echo -e "----------------------"
-echo -e "Username : $getUser"
-echo -e "Expired date : $exp"
-echo -e ""
+oldExpDate=$(grep -w "$getUser" /usr/local/etc/v2ray/accounts | awk '{print $3}')
+newExpDate=$(date -d +"${getDuration}"days +%F)
+sed -i "s/$oldExpDate/$newExpDate/" >>/usr/local/etc/v2ray/accounts
 
 clear && echo
 echo -e "${WHITE}=====================================================${CLR}"
@@ -51,7 +41,7 @@ echo -e "${BLUE}░█▄▄█ ──░█── ░█▄▄█ ░█▄▄�
 echo -e "${WHITE}=====================================================${CLR}"
 echo
 echo -e "${YELLOW} Nama pengguna${CLR}:${GREEN} $getUser${CLR}"
-echo -e "${YELLOW}  Tarikh luput${CLR}:${GREEN} $expDate${CLR}"
+echo -e "${YELLOW}  Tarikh luput${CLR}:${GREEN} $newExpDate${CLR}"
 echo
 echo -e "${WHITE}=====================================================${CLR}"
 echo -e "${WHITE}=======[${CLR} ${BLUE}SKRIP OLEH DOCTYPE, HAK CIPTA 2022.${CLR} ${WHITE}]=======${CLR}"
