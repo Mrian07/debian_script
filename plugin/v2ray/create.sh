@@ -85,7 +85,7 @@ function vless {
     clear && echo
     echo -e "${WHITE}=====================================================${CLR}"
     echo
-    echo -e "${YELLOW} [01]${CLR} ${GREEN}Tambah akaun vless_grpc-tls${CLR}"
+    echo -e "${YELLOW} [01]${CLR} ${GREEN}Tambah akaun vless_tcp-tls-grpc${CLR}"
     echo -e "${YELLOW} [02]${CLR} ${GREEN}Tambah akaun vless_tcp-tls${CLR}"
     echo -e "${YELLOW} [03]${CLR} ${GREEN}Tambah akaun vless_tcp-ws${CLR}"
     echo -e "${YELLOW} [04]${CLR} ${GREEN}Kembali ke menu v2ray${CLR}"
@@ -112,9 +112,9 @@ function vless {
 
             echo "${getUser} ${UUID} ${expDate}" >>/usr/local/etc/v2ray/accounts
 
-            cat /usr/local/etc/v2ray/vless-grpc-tls.json | jq '.inbounds[0].settings.clients += [{"id": "'${UUID}'","email": "'${getUser}@${DOMAIN}'"}]' >/usr/local/etc/v2ray/vless-grpc-tls_tmp.json
-            mv -f /usr/local/etc/v2ray/vless-grpc-tls_tmp.json /usr/local/etc/v2ray/vless-grpc-tls.json
-            systemctl restart v2ray@vless-grpc-tls
+            cat /usr/local/etc/v2ray/vless-tls-grpc.json | jq '.inbounds[0].settings.clients += [{"id": "'${UUID}'","email": "'${getUser}@${DOMAIN}'"}]' >/usr/local/etc/v2ray/vless-tls-grpc_tmp.json
+            mv -f /usr/local/etc/v2ray/vless-tls-grpc_tmp.json /usr/local/etc/v2ray/vless-tls-grpc.json
+            systemctl restart v2ray@vless-tls-grpc
 
             clear && echo
             echo -e "${WHITE}=====================================================${CLR}"
@@ -229,9 +229,9 @@ function vmess {
     clear && echo
     echo -e "${WHITE}=====================================================${CLR}"
     echo
-    echo -e "${YELLOW} [01]${CLR} ${GREEN}Tambah akaun vmess_grpc-tls${CLR}"
+    echo -e "${YELLOW} [01]${CLR} ${GREEN}Tambah akaun vmess_tcp-tls-grpc${CLR}"
     echo -e "${YELLOW} [02]${CLR} ${GREEN}Tambah akaun vmess_tcp-tls${CLR}"
-    echo -e "${YELLOW} [03]${CLR} ${GREEN}Tambah akaun vmess_ws-tls${CLR}"
+    echo -e "${YELLOW} [03]${CLR} ${GREEN}Tambah akaun vmess_tcp-tls-ws${CLR}"
     echo -e "${YELLOW} [04]${CLR} ${GREEN}Kembali ke menu v2ray${CLR}"
     echo -e "${YELLOW} [00]${CLR} ${GREEN}Keluar dari menu${CLR}"
     echo
