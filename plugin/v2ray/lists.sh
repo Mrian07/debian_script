@@ -22,9 +22,9 @@ while read -r list; do
 	getExpDate=$(echo "$list" | awk '{print $3}')
 	printf "%-17s %2s\n" "$getUser" "$getExpDate"
 done </usr/local/etc/v2ray/accounts
-total=$(wc -l /usr/local/etc/v2ray/accounts | awk '{print $1}')
+getTotal=$(wc -l /usr/local/etc/v2ray/accounts | awk '{print $1}')
 echo -e "-------------------------------"
-echo -e "${YELLOW}Jumlah akaun:${CLR} ${GREEN}$total${CLR}"
+echo -e "${YELLOW}Jumlah akaun:${CLR} ${GREEN}$getTotal${CLR}"
 
 echo
 echo -e "${WHITE}=====================================================${CLR}"
