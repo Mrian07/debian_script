@@ -121,7 +121,7 @@ Make sure your SSL/TLS option on CloudFlare is **Full**\.
 Login to your VPS and copy & paste command below to your terminal.
 
 ```
-wget -q https://raw.githubusercontent.com/cybertize/buster/fate/install.sh && chmod +x ~/install.sh && ~./install.sh
+wget -q https://github.com/cybertize/debian/blob/buster/install.sh && chmod +x ~/install.sh && ~./install.sh
 ```
 
 <br>
