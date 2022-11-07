@@ -49,7 +49,8 @@ http {
 
     log_format  main  '\$remote_addr - \$remote_user [\$time_local] "\$request" '
                       '\$status \$body_bytes_sent "\$http_referer" '
-                      '"\$http_user_agent" "\$http_x_forwarded_for"';
+                      '"\$http_user_agent" "\$http_x_forwarded_for"'
+                      '\$proxy_protocol_addr:\$proxy_protocol_port';
 
     access_log /var/log/nginx/access.log;
     error_log /var/log/nginx/error.log;
@@ -93,8 +94,10 @@ NGINX
 cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.old
 cat >/etc/nginx/conf.d/default.conf <<-CONF
 server {
-    listen 8080;
+    listen 8080 default_server;
+    #listen [::]:80 default_server;
     server_name $DOMAIN www.$DOMAIN;
+    return 301 https://\$http_host\$request_uri;
 
     #access_log /var/log/nginx/access.log  main;
 
